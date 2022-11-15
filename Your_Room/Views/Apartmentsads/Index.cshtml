@@ -1,0 +1,162 @@
+﻿@model IEnumerable<Your_Room.Models.Apartmentsad>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Shared.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adtitel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numofperson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numofroom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numofbed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuildingNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Electricitybillprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Waterbillprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DurationNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserinfoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adtitel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Addate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numofperson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numofroom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numofbed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Electricitybillprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Waterbillprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressNavigation.Addresid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserinfoNavigation.Userid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Adid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Adid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Adid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
