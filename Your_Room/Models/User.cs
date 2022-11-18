@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -23,7 +25,9 @@ namespace Your_Room.Models
         public string Gender { get; set; }
         public decimal? Age { get; set; }
         public string Usertype { get; set; }
+        [NotMapped]
 
+        public virtual IFormFile ImageFile { get; set; }
         public virtual ICollection<Apartmentsad> Apartmentsads { get; set; }
         public virtual ICollection<Furniture> Furnitures { get; set; }
         public virtual ICollection<Login> Logins { get; set; }
