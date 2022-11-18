@@ -26,7 +26,6 @@ namespace Your_Room.Models
         public decimal? Age { get; set; }
         public string Usertype { get; set; }
         [NotMapped]
-
         public virtual IFormFile ImageFile { get; set; }
         public virtual ICollection<Apartmentsad> Apartmentsads { get; set; }
         public virtual ICollection<Furniture> Furnitures { get; set; }

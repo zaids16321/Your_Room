@@ -72,33 +72,46 @@
                                         <input asp-for="Phonenumber" class="form-control" />
 
                                     </div>
-                                    <div class="form-group first">
-                                      <label asp-for="ImageFile" class="label">Image File</label>
-                                        <input asp-for="ImageFile" class="input--style-4" />
+                                    <div class="form-group first" style="margin-top: 32px;">
+                                      <label style="margin-top: -25px;" asp-for="ImageFile" class="label">Image File</label>
+                                        <input asp-for="ImageFile" class="input--style-4"  style="width: 20.5em;" />
 
                                     </div>
-                                    <div class="form-group first">
-                                        <label asp-for="Gender" class="control-label"></label>
-                                        <input asp-for="Gender" class="form-control" />
+                                    <div class="form-group first" style="margin-top: 32px;">
+@*                                        
+                                        <input asp-for="Gender" class="form-control" />*@
+
+                                        <label asp-for="Gender" style="margin-top: -20px;" class="control-label">Gender</label>
+                                        <div class="form-check form-check-inline">
+                                          <input asp-for="Gender" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                          <label style="margin-left: 16px; color: #000000;" class="form-check-label" asp-for="Gender">Male</label>
+                                        </div>
+                                        <div style="padding-left:10px;" class="form-check form-check-inline">
+                                          <input asp-for="Gender" style="margin-left:12px;" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                          <label style="margin-left: 27px; color: #000000;" class="form-check-label" asp-for="Gender">Female</label>
+                                        </div>
 
                                     </div>
+
                                     <div class="form-group first">
                                         <label asp-for="Age" class="control-label"></label>
                                         <input asp-for="Age" class="form-control" />
 
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group first" style="margin-top: 32px;">
+@*                                      <label asp-for="Usertype" class="control-label"></label>
+                                        <select asp-for="Usertype" class="form-control">male</select> 
                                         <label asp-for="Usertype" class="control-label"></label>
-                                        <select asp-for="Usertype" class="form-control">male</select>
-                                        <label asp-for="Usertype" class="control-label"></label>
-                                        <select asp-for="Usertype" class="form-control">Female</select>
+                                        <select asp-for="Usertype" class="form-control">Female</select>*@
+
+                                      <label style="margin-top: -20px;" class="control-label">User Type</label>
+                                      <select asp-for="Usertype"  class="form-control">
+                                        <option asp-for="Usertype" class="form-control">Student</option>
+                                        <option asp-for="Usertype" class="form-control">Lessor</option>
+                                      </select>
                                     </div>
 
-                                    <div class="form-group first">
-                                        <label asp-for="Usertype" class="control-label"></label>
-                                        <input asp-for="Usertype" class="form-control" />
-
-                                    </div>
+      
 
                                     <div class="d-flex mb-5 align-items-center">
                                         <label class="control control--checkbox mb-0">
@@ -137,7 +150,48 @@
 
 
 
+   @* <script>
+        button = document.querySelector("button");
+datalist = document.querySelector("datalist");
+select = document.querySelector("select");
+options = select.options;
 
+/* on arrow button click, show/hide the DDL*/
+button.addEventListener("click", toggle_ddl);
+
+function toggle_ddl() {
+  if (datalist.style.display === "") {
+    datalist.style.display = "block";
+    this.textContent = "▲";
+    /* If input already has a value, select that option from DDL */
+    var val = input.value;
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].text === val) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+  } else hide_select();
+}
+
+/* when user selects an option from DDL, write it to text field */
+select.addEventListener("change", fill_input);
+
+function fill_input() {
+  input.value = options[this.selectedIndex].value;
+  hide_select();
+}
+
+/* when user wants to type in text field, hide DDL */
+input = document.querySelector("input");
+input.addEventListener("focus", hide_select);
+
+function hide_select() {
+  datalist.style.display = "";
+  button.textContent = "▼";
+}
+
+    </script>*@
 </body>
 
 
