@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -22,13 +24,31 @@ namespace Your_Room.Models
         public decimal? Waterbillprice { get; set; }
         public decimal? Duration { get; set; }
         public string Image1 { get; set; }
+       
+        [NotMapped]
+        public virtual IFormFile ImageFile1 { get; set; }
         public string Image2 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile2 { get; set; }
+
         public string Image3 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile3 { get; set; }
         public string Image4 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile4 { get; set; }
         public string Image5 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile5 { get; set; }
         public string Image6 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile6 { get; set; }
         public string Image7 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile7 { get; set; }
         public string Image8 { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile8 { get; set; }
         public decimal? Userinfo { get; set; }
 
         public virtual Address AddressNavigation { get; set; }

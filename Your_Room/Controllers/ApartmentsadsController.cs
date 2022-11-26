@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +14,11 @@ namespace Your_Room.Controllers
     public class ApartmentsadsController : Controller
     {
         private readonly ModelContext _context;
-
-        public ApartmentsadsController(ModelContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ApartmentsadsController(ModelContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Apartmentsads
@@ -60,10 +63,25 @@ namespace Your_Room.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Adid,Adtitel,Addate,Descriptions,Price,Numofperson,Numofroom,Numofbed,Address,Street,BuildingNumber,Electricitybillprice,Waterbillprice,Duration,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Userinfo")] Apartmentsad apartmentsad)
+        public async Task<IActionResult> Create([Bind("Adid,Adtitel,Addate,Descriptions,Price,Numofperson,Numofroom,Numofbed,Address,Street,BuildingNumber,Electricitybillprice,Waterbillprice,Duration,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Userinfo,ImageFile1")] Apartmentsad apartmentsad)
         {
+
+        
             if (ModelState.IsValid)
             {
+                if (apartmentsad.ImageFile1 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile1.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile1.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image1 = fileName;
+                }
+
                 _context.Add(apartmentsad);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
