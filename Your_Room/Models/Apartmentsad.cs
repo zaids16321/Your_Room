@@ -23,6 +23,8 @@ namespace Your_Room.Models
         public decimal? Electricitybillprice { get; set; }
         public decimal? Waterbillprice { get; set; }
         public decimal? Duration { get; set; }
+
+
         public string Image1 { get; set; }
        
         [NotMapped]
