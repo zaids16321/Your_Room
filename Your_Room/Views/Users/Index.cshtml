@@ -1,14 +1,228 @@
-﻿@model IEnumerable<Your_Room.Models.User>
+﻿@model Your_Room.Models.User
 
 @{
     ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_PagesLayout1.cshtml";
 }
 
-<h1>Index</h1>
+<head>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/Ads/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Ads/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Ads/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/Ads/css/style.css" rel="stylesheet">
+    <style>
+    
+            <style>
+        .dark-edition .card {
+    margin-top: 108px;
+     height: 280px;
+    background: #ffffff5c;
+    /* color: #c32b2b; */
+}
+.dark-edition .form-control {
+    color: #a5a5a5;
+}
+.dark-edition .table>thead>tr>th, .dark-edition .table>tbody>tr>th, .dark-edition .table>tfoot>tr>th, .dark-edition .table>thead>tr>td, .dark-edition .table>tbody>tr>td, .dark-edition .table>tfoot>tr>td {
+    color: #fff;
+    border-color: rgb(0 0 0);
+}
+.card form {
+    margin-top: 16px;
+    margin-left: 49px;
+}
+.dark-edition .form-control, .is-focused .dark-edition .form-control {
+    background-image: linear-gradient(to top, #005555 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px);
+}
+.form-group {
+    width: 220px;
+    padding-bottom: 10px;
+    position: relative;
+    margin: 8px 0 0;
+}
+.card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
+
+    height: 277px;
+}
+    </style>
+</head>
+<body style="background-color:white">
+    <div class="container-xxl bg-white p-0" id="property-details">
+        <!-- Property List Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-0 gx-5 align-items-end">
+                    <div class="col-lg-6">
+                        <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                            <h1 class="mb-3">Property Listing</h1>
+                            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                        <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">For Sell</a>
+                            </li>
+                            <li class="nav-item me-0">
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+
+
+
+
+<div class="col-lg-12 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #000000d4, #005555);">
+                  <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Userid" />
+                        <div class="row">
+            <div class="col-6">
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phonenumber" class="control-label"></label>
+                <input asp-for="Phonenumber" class="form-control" />
+                <span asp-validation-for="Phonenumber" class="text-danger"></span>
+            </div>
+            </div>
+            
+            <div class="col-6">
+            <div class="form-group">
+                <label asp-for="UserImage" class="control-label"></label>
+                <input asp-for="UserImage" class="form-control" />
+                <span asp-validation-for="UserImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usertype" class="control-label"></label>
+                <input asp-for="Usertype" class="form-control" />
+                <span asp-validation-for="Usertype" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+                        </div>
+
+        </form>      
+     @*   <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserId" />
+            <div class="row">
+            <div class="col-6">
+             <div class="form-group">
+                <label asp-for="Fname" class="control-label text-white"></label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label text-white"></label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label text-white"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label text-white"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="form-group">
+                <label asp-for="Phonenumber" class="control-label text-white"></label>
+                <input asp-for="Phonenumber" class="form-control" />
+                <span asp-validation-for="Phonenumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label text-white"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label text-white"></label>
+                <input asp-for="ImageFile" class="form-control" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+            </div>
+            </div>
+        </form>*@
+   
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+                    <hr />
+
+
+
+                    <div class="col-lg-12 col-md-12">
+              <div class="card">
+                              <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #000000d4, #005555);">
+                     <div class="row">
+                
+
 <table class="table">
     <thead>
         <tr>
@@ -40,38 +254,65 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {*@
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FullName)
+                @Html.DisplayFor(modelItem => Model.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => Model.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
+                @Html.DisplayFor(modelItem => Model.Password)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Phonenumber)
+                @Html.DisplayFor(modelItem => Model.Phonenumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserImage)
+                @Html.DisplayFor(modelItem => Model.UserImage)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Gender)
+                @Html.DisplayFor(modelItem => Model.Gender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Age)
+                @Html.DisplayFor(modelItem => Model.Age)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usertype)
+                @Html.DisplayFor(modelItem => Model.Usertype)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Userid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Userid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Userid">Delete</a>
+                <a asp-action="Edit" asp-route-id="@Model.Userid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@Model.Userid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@Model.Userid">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+            </div>
+            
+   
+
+</div>
+</div>
+                </div>
+
+
+
+              </div>
+        </div>
+        <!-- Property List End -->
+        </div>
+            <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Ads/lib/wow/wow.min.js"></script>
+    <script src="~/Ads/lib/easing/easing.min.js"></script>
+    <script src="~/Ads/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/Ads/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/Ads/js/main.js"></script>
+
+    </body>

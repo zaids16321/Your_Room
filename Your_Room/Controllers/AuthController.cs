@@ -78,16 +78,13 @@ namespace Your_Room.Controllers
             var auth = _context.Logins.Include(z => z.User).Where(x => x.Email == login.Email && x.Password == login.Password).SingleOrDefault();
             if (auth != null)
             {
-
-
                 //HttpContext.Session.SetInt32("Admin_Id", (int)auth.Userid);
                 //HttpContext.Session.SetString("Admin_Name", auth.Email);
                 //HttpContext.Session.SetString("Admin_Image", auth.User.UserImage);
-
-
                 HttpContext.Session.SetInt32("Customer_Id", (int)auth.Userid);
+                HttpContext.Session.SetString("Customer_Name", auth.User.FullName);
                 HttpContext.Session.SetString("Customer_Image", auth.User.UserImage);
-                HttpContext.Session.SetString("Customer_Name", auth.Email);
+                HttpContext.Session.SetString("Customer_Email", auth.Email);
                 return RedirectToAction("Index", "Home");
             }
 
@@ -99,7 +96,13 @@ namespace Your_Room.Controllers
         {
             return View();
         }
+        public IActionResult Logout()
+        {
 
+            //AuthenticationHttpContextExtensions.SignOutAsync(HttpContext, CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Auth");
+        }
 
         private bool UserExists(decimal id)
         {

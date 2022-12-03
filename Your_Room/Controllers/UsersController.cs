@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +19,18 @@ namespace Your_Room.Controllers
             _context = context;
         }
 
+
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetInt32("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
+
+            var users = await _context.Users.Include(l => l.Logins).Where(i => i.Userid == HttpContext.Session.GetInt32("Customer_Id")).FirstOrDefaultAsync();
+            return View(users);
+            //return View(await _context.Users.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -141,7 +150,8 @@ namespace Your_Room.Controllers
             var user = await _context.Users.FindAsync(id);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Login", "Auth");
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(decimal id)
