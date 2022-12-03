@@ -52,8 +52,8 @@ namespace Your_Room.Controllers
         // GET: Apartmentsads/Create
         public IActionResult Create()
         {
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid");
-            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Id");
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City");
+            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration");
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid");
             return View();
         }
@@ -182,8 +182,8 @@ namespace Your_Room.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid", apartmentsad.Address);
-            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Id", apartmentsad.Duration);
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", apartmentsad.Address);
+            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration", apartmentsad.Duration);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", apartmentsad.Userinfo);
             return View(apartmentsad);
         }

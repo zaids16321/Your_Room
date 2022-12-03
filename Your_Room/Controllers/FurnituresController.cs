@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +14,11 @@ namespace Your_Room.Controllers
     public class FurnituresController : Controller
     {
         private readonly ModelContext _context;
-
-        public FurnituresController(ModelContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public FurnituresController(ModelContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Furnitures
@@ -26,48 +29,141 @@ namespace Your_Room.Controllers
         }
 
         // GET: Furnitures/Details/5
-        public async Task<IActionResult> Details(decimal? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var furniture = await _context.Furnitures
-                .Include(f => f.AddressNavigation)
-                .Include(f => f.UserinfoNavigation)
-                .FirstOrDefaultAsync(m => m.Fid == id);
-            if (furniture == null)
-            {
-                return NotFound();
-            }
-
-            return View(furniture);
-        }
-
-        // GET: Furnitures/Create
         public IActionResult Create()
         {
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid");
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City");
+            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration");
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid");
             return View();
         }
 
-        // POST: Furnitures/Create
+        // POST: furnitures/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Fid,Ftitel,Fdate,Descriptions,Price,Address,Street,BuildingNumber,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Userinfo")] Furniture furniture)
+        public async Task<IActionResult> Create(Furniture furniture)
         {
+            
+
             if (ModelState.IsValid)
             {
+                if (furniture.ImageFile1 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile1.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile1.CopyTo(fileStream);
+                    }
+                    furniture.Image1 = fileName;
+                }
+
+                if (furniture.ImageFile2 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile2.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile2.CopyTo(fileStream);
+                    }
+                    furniture.Image2 = fileName;
+                }
+
+
+                if (furniture.ImageFile3 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile3.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile3.CopyTo(fileStream);
+                    }
+                    furniture.Image3 = fileName;
+                }
+
+
+                if (furniture.ImageFile4 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile4.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile4.CopyTo(fileStream);
+                    }
+                    furniture.Image4 = fileName;
+                }
+
+                if (furniture.ImageFile5 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile5.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile5.CopyTo(fileStream);
+                    }
+                    furniture.Image5 = fileName;
+                }
+
+                if (furniture.ImageFile6 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile6.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile6.CopyTo(fileStream);
+                    }
+                    furniture.Image6 = fileName;
+                }
+
+
+                if (furniture.ImageFile7 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile7.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile7.CopyTo(fileStream);
+                    }
+                    furniture.Image7 = fileName;
+                }
+
+                if (furniture.Image8 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile8.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        furniture.ImageFile8.CopyTo(fileStream);
+                    }
+                    furniture.Image8 = fileName;
+                }
+
+
+                furniture.Fdate = DateTime.Now;
                 _context.Add(furniture);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid", furniture.Address);
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", furniture.Address);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", furniture.Userinfo);
+            ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid");
             return View(furniture);
         }
 
