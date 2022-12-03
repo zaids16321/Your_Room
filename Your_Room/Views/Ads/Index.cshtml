@@ -1,4 +1,4 @@
-﻿@model Tuple<IEnumerable<Your_Room.Models.Apartmentsad>,IEnumerable<Your_Room.Models.Furniture>>
+﻿@model Tuple<IEnumerable<Your_Room.Models.Apartmentsad>,IEnumerable<Your_Room.Models.Furniture>,IEnumerable<Your_Room.Models.Address>,IEnumerable<Your_Room.Models.Duration>>
 
 @{
     ViewData["Title"] = "Privacy Policy";
@@ -43,10 +43,10 @@
                     <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Apartment</a>
                             </li>
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">For Sell</a>
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">Furniture</a>
                             </li>
                             <li class="nav-item me-0">
                                 <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
@@ -59,24 +59,40 @@
                         <div class="row g-4">
                             @foreach (var us in Model.Item1)
                            {
-                               
-                           
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src=@Url.Content("~/Image/"+us.Image1) >  </a>
+                                        <a href=""><img class="img-fluid" src=@Url.Content("~/Image/"+@us.Image1) style="height:300px;width:408px;">  </a>
                                         <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
                                         <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
                                     </div>
                                     <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3">$@us.Price</h5>
-                                        <a class="d-block h5 mb-2" href="">@us.Adtitel</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>@us.Address</p>
+                                            @if (@us.Price != null)
+                                            {
+                                                <h5 class="text-primary mb-3">$@us.Price</h5>
+                                            }
+                                            @if (@us.Adtitel != null)
+                                            {
+                                                <a class="d-block h5 mb-2" href="">@us.Adtitel</a>
+                                            }
+                                            @foreach (var item in Model.Item3)
+                                            {
+                                                @if (us.Address == item.Addresid)
+                                                {
+                                                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i>@item.City</p>
+                                                }
+                                            }
                                     </div>
                                     <div class="d-flex border-top">
                                         <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>@us.Numofroom</small>
                                         <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>@us.Numofbed Beds </small>
-                                        <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>@us.Duration</small>
+                                            @foreach (var item in Model.Item4)
+                                            {
+                                                @if (us.Duration == item.Id)
+                                                {
+                                                    <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>@item.Rentalduration</small>
+                                                }
+                                            }
                                     </div>
                                 </div>
                             </div>
@@ -85,26 +101,48 @@
                     </div>
                     <div id="tab-2" class="tab-pane fade show p-0">
                         <div class="row g-4">
+                            @foreach (var item in Model.Item2)
+                           {
+                               
+                           
                             <div class="col-lg-4 col-md-6">
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="img/property-1.jpg" alt=""></a>
+                                        <a href=""><img class="img-fluid" src=@Url.Content("~/Image/"+@item.Image1) style="height:300px;width:408px;">  </a>
                                         <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
                                         <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
                                     </div>
                                     <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3">$12,345</h5>
-                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                                        @if (@item.Price != null)
+                                            {
+                                                <h5 class="text-primary mb-3">$@item.Price</h5>
+                                            }
+                                            @if (@item.Ftitel != null)
+                                            {
+                                                <a class="d-block h5 mb-2" href="">@item.Ftitel</a>
+                                            }
+                                            @foreach (var item1 in Model.Item3)
+                                            {
+                                                @if (item.Address == item1.Addresid)
+                                                {
+                                                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i>@item1.City</p>
+                                                }
+                                            }
                                     </div>
-                                    <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
-                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
-                                        <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
-                                    </div>
+@*                                    <div class="d-flex border-top">
+                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>@item.Numofroom</small>
+                                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>@item.Numofbed Beds </small>
+                                            @foreach (var item in Model.Item4)
+                                            {
+                                                @if (us.Duration == item.Id)
+                                                {
+                                                    <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>@item.Rentalduration</small>
+                                                }
+                                            }
+                                    </div>*@
                                 </div>
                             </div>
-                         
+                            }
                           
                             
                         </div>
@@ -249,275 +287,3 @@
     </body>
 
 
-
-
-
-
-
-
-<table class="table">
-    <thead>
-        <tr>@*//fgkksrjgov*@
-            <th>
-                 Adtitel)
-            </th>
-            <th>
-                 Addate)
-            </th>
-            <th>
-                 Descriptions)
-            </th>
-            <th>
-                 Price)
-            </th>
-            <th>
-                 Numofperson)
-            </th>
-            <th>
-                 Numofroom)
-            </th>
-            <th>
-                 Numofbed)
-            </th>
-            <th>
-                 Street)
-            </th>
-            <th>
-                 BuildingNumber)
-            </th>
-            <th>
-                 Electricitybillprice)
-            </th>
-            <th>
-                 Waterbillprice)
-            </th>
-            <th>
-                 Image1)
-            </th>
-            <th>
-                 Image2)
-            </th>
-            <th>
-                 Image3)
-            </th>
-            <th>
-                 Image4)
-            </th>
-            <th>
-                 Image5)
-            </th>
-            <th>
-                 Image6)
-            </th>
-            <th>
-                 Image7)
-            </th>
-            <th>
-                 Image8)
-            </th>
-            <th>
-                 AddressNavigation)
-            </th>
-            <th>
-                DurationNavigation
-            </th>
-            <th>
-             model.UserinfoNavigation
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Item1) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adtitel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Addate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descriptions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numofperson)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numofroom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Numofbed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BuildingNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Electricitybillprice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Waterbillprice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image4)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image5)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image6)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image7)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image8)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressNavigation.Addresid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DurationNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserinfoNavigation.Userid)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Adid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Adid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Adid">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
-
-                <table class="table">
-    <thead>
-        <tr>
-            <th>
-                 Ftitel)
-            </th>
-            <th>
-                 Fdate)
-            </th>
-            <th>
-                 Descriptions)
-            </th>
-            <th>
-                 Price)
-            </th>
-            <th>
-                 Street)
-            </th>
-            <th>
-                 BuildingNumber)
-            </th>
-            <th>
-                 Image1)
-            </th>
-            <th>
-                 Image2)
-            </th>
-            <th>
-                 Image3)
-            </th>
-            <th>
-                 Image4)
-            </th>
-            <th>
-                 Image5)
-            </th>
-            <th>
-                 Image6)
-            </th>
-            <th>
-                 Image7)
-            </th>
-            <th>
-                 Image8)
-            </th>
-            <th>
-                 AddressNavigation)
-            </th>
-            <th>
-                 UserinfoNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Item2) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ftitel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descriptions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BuildingNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image4)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image5)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image6)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image7)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image8)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressNavigation.Addresid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserinfoNavigation.Userid)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Fid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Fid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Fid">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

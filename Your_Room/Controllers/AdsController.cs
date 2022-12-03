@@ -19,7 +19,11 @@ namespace Your_Room.Controllers
         {
             var apartmentsads = _context.Apartmentsads.Include(a => a.AddressNavigation).Include(a => a.DurationNavigation).Include(a => a.UserinfoNavigation);
             var furnitures = _context.Furnitures.Include(f => f.AddressNavigation).Include(f => f.UserinfoNavigation);
-            var Ads = Tuple.Create<IEnumerable<Apartmentsad>, IEnumerable<Furniture>>(apartmentsads, furnitures);
+            var address = _context.Addresses;
+            var dur = _context.Durations;
+
+
+            var Ads = Tuple.Create<IEnumerable<Apartmentsad>, IEnumerable<Furniture>, IEnumerable<Address>,IEnumerable<Duration>>(apartmentsads, furnitures, address, dur);
 
 
             return View(Ads);

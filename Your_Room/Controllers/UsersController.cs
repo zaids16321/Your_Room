@@ -94,7 +94,7 @@ namespace Your_Room.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("Userid,FullName,Email,Password,Phonenumber,UserImage,Gender,Age,Usertype")] User user)
+        public async Task<IActionResult> Edit(decimal id, User user )
         {
             if (id != user.Userid)
             {
@@ -105,8 +105,22 @@ namespace Your_Room.Controllers
             {
                 try
                 {
+                    var login = _context.Logins.Where(u => u.Id == id).FirstOrDefault();
+                    if (user.Password != null)
+                    {
+                        login.Password = user.Password;
+                    }
+
+                    if (user.Email != null)
+                    {
+                        login.Email = user.Email;
+                    }
+                    _context.Update(login);
+                    await _context.SaveChangesAsync();
                     _context.Update(user);
                     await _context.SaveChangesAsync();
+
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -119,7 +133,8 @@ namespace Your_Room.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+            return View(user);
+
             }
             return View(user);
         }

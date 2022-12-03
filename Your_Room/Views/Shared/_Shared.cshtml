@@ -72,7 +72,7 @@
                 <li><a href="#contact-section" class="nav-link">Contact</a></li>
                     @if (email!=null)
                {
-                 <li><a asp-action="Index" asp-controller="Users"  asp-route-id="@Id" asp-area="MicrosoftIdentity"  >@ViewBag.Customer_Name Profile </a> </li>
+                 <li><a asp-action="Edit" asp-controller="Users"  asp-route-id="@Id" asp-area="MicrosoftIdentity"  >@ViewBag.Customer_Name Profile </a> </li>
       
                  <li><a asp-controller="Auth" asp-area="MicrosoftIdentity" asp-action="Logout" class="nav-link" >Logout</a></li>                    
                }
