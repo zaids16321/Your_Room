@@ -63,7 +63,7 @@ namespace Your_Room.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Adid,Adtitel,Addate,Descriptions,Price,Numofperson,Numofroom,Numofbed,Address,Street,BuildingNumber,Electricitybillprice,Waterbillprice,Duration,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Userinfo,ImageFile1")] Apartmentsad apartmentsad)
+        public async Task<IActionResult> Create( Apartmentsad apartmentsad)
         {
 
         
@@ -82,6 +82,102 @@ namespace Your_Room.Controllers
                     apartmentsad.Image1 = fileName;
                 }
 
+                if (apartmentsad.ImageFile2 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile2.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile2.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image2 = fileName;
+                }
+
+
+                if (apartmentsad.ImageFile3 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile3.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile3.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image3 = fileName;
+                }
+
+
+                if (apartmentsad.ImageFile4 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile4.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile4.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image4 = fileName;
+                }
+
+                if (apartmentsad.ImageFile5 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile5.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile5.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image5 = fileName;
+                }
+
+                if (apartmentsad.ImageFile6 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile6.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile6.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image6 = fileName;
+                }
+
+
+                if (apartmentsad.ImageFile7 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile7.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile7.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image7 = fileName;
+                }
+
+                if (apartmentsad.ImageFile8 != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                    string fileName = Guid.NewGuid().ToString() + "_" + apartmentsad.ImageFile8.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                    string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        apartmentsad.ImageFile8.CopyTo(fileStream);
+                    }
+                    apartmentsad.Image8 = fileName;
+                }
+
+
+                apartmentsad.Addate = DateTime.Now;
                 _context.Add(apartmentsad);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
