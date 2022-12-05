@@ -2,14 +2,10 @@
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_PagesLayout1.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+@*
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Userid" />
@@ -57,13 +53,441 @@
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
-    </div>
-</div>
+*@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="../assets/"
+      data-template="vertical-menu-template-free">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <title>Horizontal Layouts - Forms | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/Assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="~/Assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/createAd/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/createAd/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/createAd/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/createAd/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+    <!-- Helpers -->
+    <script src="~/createAd/assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/createAd/assets/js/config.js"></script>
+    <style>
+        .pen .navbar-toggle {
+  border: none;
+  background: transparent !important;
 }
+
+.pen .navbar-toggle:hover {
+  background: transparent !important;
+}
+
+.pen .navbar-toggle .icon-bar {
+  width: 22px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+/* ANIMATED X */
+.navbar-toggle.x .icon-bar:nth-of-type(1) {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 10% 10%;
+  -ms-transform-origin: 10% 10%;
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggle.x .icon-bar:nth-of-type(2) {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.navbar-toggle.x .icon-bar:nth-of-type(3) {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 10% 90%;
+  -ms-transform-origin: 10% 90%;
+  transform-origin: 10% 90%;
+}
+
+/* ANIMATED X COLLAPSED */
+.navbar-toggle.x.collapsed .icon-bar:nth-of-type(1) {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.navbar-toggle.x.collapsed .icon-bar:nth-of-type(2) {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.navbar-toggle.x.collapsed .icon-bar:nth-of-type(3) {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+/* END ANIMATED X */
+
+/* ANIMATED RIGHT ARROW */
+.navbar-toggle.rarr.collapsed .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  transform-origin: right top;
+  width: 22px;
+}
+
+.navbar-toggle.rarr.collapsed .icon-bar:nth-of-type(2) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.rarr.collapsed .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  transform-origin: right bottom;
+  width: 22px;
+}
+
+.navbar-toggle.rarr .icon-bar:nth-of-type(1) {
+  transform: translate3d(11px, 6px, 0) rotate(45deg);
+  transform-origin: right top;
+  width: 11px;
+}
+
+.navbar-toggle.rarr .icon-bar:nth-of-type(2) {
+  /* transform: scale(0.75); */
+}
+
+.navbar-toggle.rarr .icon-bar:nth-of-type(3) {
+  transform: translate3d(11px, -6px, 0) rotate(-45deg);
+  transform-origin: right bottom;
+  width: 11px;
+}
+/* END ANIMATED RIGHT ARROW */
+
+/* ANIMATED LEFT ARROW */
+.navbar-toggle.larr.collapsed .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  width: 22px;
+}
+
+.navbar-toggle.larr.collapsed .icon-bar:nth-of-type(2) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.larr.collapsed .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  width: 22px;
+}
+
+.navbar-toggle.larr .icon-bar:nth-of-type(1) {
+  transform: translate3d(0px, 6px, 0) rotate(45deg);
+  transform-origin: left top;
+  width: 11px;
+}
+
+.navbar-toggle.larr .icon-bar:nth-of-type(3) {
+  transform: translate3d(0px, -6px, 0) rotate(-45deg);
+  transform-origin: left bottom;
+  width: 11px;
+}
+/* END ANIMATED LEFT ARROW */
+
+/* ANIMATED UP ARROW */
+.navbar-toggle.uarr.collapsed .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  width: 22px;
+}
+
+.navbar-toggle.uarr.collapsed .icon-bar:nth-of-type(2) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.uarr.collapsed .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  width: 22px;
+}
+
+.navbar-toggle.uarr .icon-bar:nth-of-type(1) {
+  transform: translate3d(1px, 0, 0) rotate(-45deg);
+  transform-origin: center center;
+  width: 11px;
+}
+
+.navbar-toggle.uarr .icon-bar:nth-of-type(2) {
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+
+.navbar-toggle.uarr .icon-bar:nth-of-type(3) {
+  transform: translate3d(0px, -14px, 0) rotate(-135deg);
+  transform-origin: right top;
+  width: 11px;
+}
+/* END ANIMATED UP ARROW */
+
+/* ANIMATED PLUS */
+.navbar-toggle.plus.collapsed .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.plus.collapsed .icon-bar:nth-of-type(2) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.plus.collapsed .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.plus .icon-bar:nth-of-type(1) {
+  transform: translate3d(0px, 6px, 0) rotate(90deg);
+  transform-origin: center center;
+}
+
+.navbar-toggle.plus .icon-bar:nth-of-type(3) {
+  transform: translate3d(0px, -6px, 0) rotate(-90deg);
+  transform-origin: center center;
+}
+/* END ANIMATED PLUS */
+
+/* ANIMATED MINUS */
+.navbar-toggle.minus.collapsed .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.minus.collapsed .icon-bar:nth-of-type(2) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.minus.collapsed .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.navbar-toggle.minus .icon-bar:nth-of-type(1) {
+  transform: translate3d(0, 6px, 0);
+}
+
+.navbar-toggle.minus .icon-bar:nth-of-type(3) {
+  transform: translate3d(0, -6px, 0);
+}
+/* END ANIMATED MINUS */
+
+/* FORCE NAVBAR-TOGGLE */
+
+.pen .navbar-header {
+  float: none;
+}
+
+.pen .navbar-toggle {
+  display: block;
+}
+
+.pen .navbar-collapse {
+  border-top: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.pen .navbar-collapse.collapse {
+  display: none !important;
+}
+
+.pen .navbar-nav {
+  float: none !important;
+  margin: 7.5px -15px;
+}
+
+.pen .navbar-nav > li {
+  float: none;
+}
+
+.pen .navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pen .navbar-collapse.collapse.in {
+  display: block !important;
+}
+
+.pen .navbar-brand {
+  font-size: 14px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid" style="margin-left:500px">
+        <div class="col-sm-4">
+            <nav class="navbar navbar-default" role="navigation" style=" color: white; width: 25em; background-color: #333333;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle minus collapsed" data-toggle="collapse" data-target="#navbar-collapse-minus">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a style="color: white;  padding-bottom: 0.4521875rem;  margin-right: 1rem; white-space: nowrap;" class="navbar-brand" href="#top">Ads</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-minus">
+                    <ul class="nav navbar-nav navbar-right">                                    
+                        <li data-toggle="collapse" data-target="#navbar-collapse.in"><a asp-action="Create" asp-controller="Furnitures" style="color:white;">Apartmentsads</a></li>
+                        <li data-toggle="collapse" data-target="#navbar-collapse.in"><a asp-action="Create" asp-controller="Apartmentsads" style="color:white;">Furnitures</a></li>
+                    </ul>
+                </div><!-- .navbar-collapse -->                            
+            </nav>
+        </div>
+    </div>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+
+            <!-- Layout container -->
+            <div class="layout-page">
+
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+
+                    <div class="container-xxl flex-grow-1 container-p-y">
+
+
+                        <!-- Basic Layout & Basic with Icons -->
+                        <div class="row">
+                            <!-- Basic Layout -->
+                            <div class="col-12">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                        <h5 class="mb-0">Basic Layout</h5>
+                                        <small class="text-muted float-end">Default label</small>
+                                    </div>
+                                    <div class="card-body">
+                                    @*    <form asp-action="Create" enctype="multipart/form-data">*@
+                                        <form asp-action="Edit" enctype="multipart/form-data">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="Userid" />
+                                            <div class="row ">
+                                                <div class="col-sm-6">
+                                                    <div class="row mb-3">
+                                                        <label asp-for="FullName" class="col-sm-4 col-form-label">FullName</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="FullName" type="text" class="form-control" placeholder="FullName.."required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label asp-for="Email" class="col-sm-4 col-form-label">Email</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="Email" type="email" required class="form-control" placeholder="aaa@gmail.com" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label asp-for="Password" class="col-sm-4 col-form-label">Password</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="Password" type="text" required class="form-control" placeholder="....." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label asp-for="Phonenumber" class="col-sm-4 col-form-label">Phonenumber</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="Phonenumber" type="tel" required class="form-control" placeholder="00000000" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label asp-for="ImageFile" class="col-sm-4 col-form-label"></label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="ImageFile"  class="form-control"  placeholder="Image"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                     @*<label asp-for="Gender" style="margin-top: -20px;" class="col-sm-4 col-form-label">Gender</label>
+                                                     <div class="form-check form-check-inline">
+                                                         <input asp-for="Gender" class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male">
+                                                         <label style="margin-left: 16px; color: #000000;" class="form-check-label" asp-for="Gender">Male</label>
+                                                     </div>
+                                                       <div style="padding-left:10px;" class="form-check form-check-inline">
+                                                         <input asp-for="Gender" style="margin-left:12px;" class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female">
+                                                         <label style="margin-left: 27px; color: #000000;" class="form-check-label" asp-for="Gender">Female</label>
+                                                    /div>*@
+                                                        <label asp-for="Gender" class="col-sm-4 col-form-label">Gender</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="Gender"  class="form-control" placeholder="Gender"disabled />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label asp-for="Age" class="col-sm-4 col-form-label">Age</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="Age" type="number" required class="form-control"  placeholder="Age"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label asp-for="Usertype" class="col-sm-4 col-form-label">Usertype</label>
+                                                        <div class="col-sm-8">
+                                                            <input asp-for="Usertype"  class="form-control" placeholder="Usertype" disabled />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="d-grid gap-2 col-lg-12 mx-auto">
+                                                        <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                                                    </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Content -->
+                    <div class="content-backdrop fade"></div>
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- / Layout page -->
+        </div>
+
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="~/createAd/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/createAd/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/createAd/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/createAd/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="~/createAd/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!-- Main JS -->
+    <script src="~/createAd/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

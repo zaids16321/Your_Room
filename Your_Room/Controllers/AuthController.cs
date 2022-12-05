@@ -66,7 +66,9 @@ namespace Your_Room.Controllers
                 userLogin.Userid = user.Userid;
                 _context.Add(userLogin);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Register));
+                //return RedirectToAction(nameof(Register));
+                return RedirectToAction("Login", "Auth");
+
             }
             return View(user);
         }
@@ -83,7 +85,7 @@ namespace Your_Room.Controllers
                 //HttpContext.Session.SetString("Admin_Image", auth.User.UserImage);
                 HttpContext.Session.SetInt32("Customer_Id", (int)auth.Userid);
                 HttpContext.Session.SetString("Customer_Name", auth.User.FullName);
-                HttpContext.Session.SetString("Customer_Image", auth.User.UserImage);
+                //HttpContext.Session.SetString("Customer_Image", auth.User.UserImage);
                 HttpContext.Session.SetString("Customer_Email", auth.Email);
                 return RedirectToAction("Index", "Home");
             }

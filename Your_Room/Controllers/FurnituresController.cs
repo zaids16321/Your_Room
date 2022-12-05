@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -27,10 +28,33 @@ namespace Your_Room.Controllers
             var modelContext = _context.Furnitures.Include(f => f.AddressNavigation).Include(f => f.UserinfoNavigation);
             return View(await modelContext.ToListAsync());
         }
+        // GET: Apartmentsads/Details/5
+        public async Task<IActionResult> Details(decimal? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var furnitures = await _context.Furnitures
+                .Include(a => a.AddressNavigation)
+                //.Include(a => a.DurationNavigation)
+                .Include(a => a.UserinfoNavigation)
+                .FirstOrDefaultAsync(m => m.Fid == id);
+            if (furnitures == null)
+            {
+                return NotFound();
+            }
+
+            return View(furnitures);
+        }
         // GET: Furnitures/Details/5
         public IActionResult Create()
         {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City");
             ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration");
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid");
@@ -44,7 +68,10 @@ namespace Your_Room.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Furniture furniture)
         {
-            
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
 
             if (ModelState.IsValid)
             {
@@ -155,11 +182,11 @@ namespace Your_Room.Controllers
                     furniture.Image8 = fileName;
                 }
 
-
+                furniture.Userinfo= HttpContext.Session.GetInt32("Customer_Id");
                 furniture.Fdate = DateTime.Now;
                 _context.Add(furniture);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction();
             }
             ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", furniture.Address);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", furniture.Userinfo);
@@ -174,7 +201,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var furniture = await _context.Furnitures.FindAsync(id);
             if (furniture == null)
             {
@@ -196,7 +226,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             if (ModelState.IsValid)
             {
                 try
@@ -229,7 +262,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var furniture = await _context.Furnitures
                 .Include(f => f.AddressNavigation)
                 .Include(f => f.UserinfoNavigation)
@@ -247,6 +283,10 @@ namespace Your_Room.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var furniture = await _context.Furnitures.FindAsync(id);
             _context.Furnitures.Remove(furniture);
             await _context.SaveChangesAsync();

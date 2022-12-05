@@ -105,7 +105,10 @@ namespace Your_Room.Controllers
             {
                 try
                 {
-                    var login = _context.Logins.Where(u => u.Id == id).FirstOrDefault();
+                    
+                    _context.Update(user);
+                    await _context.SaveChangesAsync();
+                    var login = _context.Logins.Where(u => u.Userid == id).FirstOrDefault();
                     if (user.Password != null)
                     {
                         login.Password = user.Password;
@@ -117,10 +120,7 @@ namespace Your_Room.Controllers
                     }
                     _context.Update(login);
                     await _context.SaveChangesAsync();
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
 
-                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {

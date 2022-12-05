@@ -2,150 +2,77 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Shared.cshtml";
+    Layout = "~/Views/Shared/_PagesLayout1.cshtml";
+
 }
 
-<h1>Details</h1>
+    <div class="site-section" id="property-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="owl-carousel slide-one-item with-dots">
+ @*style="height:300px;width:408px;"*@
+                    @if (Model.Image1 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image1) alt="Image"style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                    @if (Model.Image2 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image2) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                     @if (Model.Image3 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image3) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                    @if (Model.Image4 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image4) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                    @if (Model.Image5 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image5) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                    @if (Model.Image6 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image6) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                    @if (Model.Image7 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image7) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+                    @if (Model.Image8 != null)
+                    {
+                        <div><img src=@Url.Content("~/Image/"+@Model.Image8) alt="Image" style="width:100%; height: 48em;" class="img-fluid"></div>
+                    }
+            </div>
+          </div>
+          <div class="col-lg-5 pl-lg-5 ml-auto">
+            <div class="mb-5">
+              <div class="mt-5">
+                <img src=@Url.Content("~/Image/"+@Model.UserinfoNavigation.UserImage) style="width: 100px; height: 100px; " alt="Image" class="border rounded-circle p-2 mx-auto mb-3">
+                <h4 class="text-black">Name:@Model.UserinfoNavigation.FullName </h4>
+                <p class="text-muted mb-4">@Model.UserinfoNavigation.Usertype / Phone @Model.UserinfoNavigation.Phonenumber</p>
+              </div>
+            </div>
+            <hr />
+            <div class="mb-5">
+              <h3 class="text-black mb-4">@Model.Adtitel</h3>
+              <p>@Model.Numofroom Room, @Model.Numofbed Beds, @Model.Numofperson Person, <br />@Model.Addate Announcement date</p>
+              <p><b>Price: $@Model.Price</b></p>
 
-<div>
-    <h4>Apartmentsad</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Adtitel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Adtitel)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Addate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Addate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descriptions)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descriptions)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Numofperson)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Numofperson)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Numofroom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Numofroom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Numofbed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Numofbed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BuildingNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BuildingNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Electricitybillprice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Electricitybillprice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Waterbillprice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Waterbillprice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image1)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image3)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image3)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image4)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image4)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image5)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image5)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image6)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image6)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image7)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image7)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image8)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image8)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddressNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddressNavigation.Addresid)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DurationNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DurationNavigation.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserinfoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserinfoNavigation.Userid)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Adid">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+              <p>@Model.Descriptions</p>
+              <p><b>Street:</b> @Model.Street.</p>
+              <p><b>Building Number:</b>@Model.BuildingNumber.</p>
+              <p><b>Electricity bill price:</b>$@Model.Electricitybillprice.</p>
+              <p><b>Water bill price:</b>$@Model.Waterbillprice.</p>
+              <p><b>City:</b>@Model.AddressNavigation.City.</p>
+              <p><b>Rental Duration:</b>@Model.DurationNavigation.Rentalduration Rentalduration.</p>
+              @*<p>@Model.UserinfoNavigation.FullName Name of Lessor.</p>*@
+              @*<p>@Model.UserinfoNavigation.Phonenumber Phone number of Lessor.</p>*@
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>

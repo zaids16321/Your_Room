@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,10 @@ namespace Your_Room.Controllers
         // GET: Apartmentsads/Create
         public IActionResult Create()
         {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City");
             ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration");
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid");
@@ -65,8 +70,11 @@ namespace Your_Room.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create( Apartmentsad apartmentsad)
         {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
 
-        
             if (ModelState.IsValid)
             {
                 if (apartmentsad.ImageFile1 != null)
@@ -176,11 +184,11 @@ namespace Your_Room.Controllers
                     apartmentsad.Image8 = fileName;
                 }
 
-
+                apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
                 apartmentsad.Addate = DateTime.Now;
                 _context.Add(apartmentsad);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction();
             }
             ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", apartmentsad.Address);
             ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration", apartmentsad.Duration);
@@ -195,7 +203,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var apartmentsad = await _context.Apartmentsads.FindAsync(id);
             if (apartmentsad == null)
             {
@@ -218,7 +229,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             if (ModelState.IsValid)
             {
                 try
@@ -252,7 +266,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var apartmentsad = await _context.Apartmentsads
                 .Include(a => a.AddressNavigation)
                 .Include(a => a.DurationNavigation)
@@ -271,6 +288,10 @@ namespace Your_Room.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var apartmentsad = await _context.Apartmentsads.FindAsync(id);
             _context.Apartmentsads.Remove(apartmentsad);
             await _context.SaveChangesAsync();
