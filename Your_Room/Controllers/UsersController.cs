@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,10 +15,11 @@ namespace Your_Room.Controllers
     public class UsersController : Controller
     {
         private readonly ModelContext _context;
-
-        public UsersController(ModelContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public UsersController(ModelContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -80,7 +83,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetInt32("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
@@ -96,6 +102,10 @@ namespace Your_Room.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(decimal id, User user )
         {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetInt32("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             if (id != user.Userid)
             {
                 return NotFound();
@@ -105,7 +115,18 @@ namespace Your_Room.Controllers
             {
                 try
                 {
-                    
+                    if (user.ImageFile != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + user.ImageFile.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            user.ImageFile.CopyTo(fileStream);
+                        }
+                        user.UserImage = fileName;
+                    }
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                     var login = _context.Logins.Where(u => u.Userid == id).FirstOrDefault();
