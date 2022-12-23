@@ -28,6 +28,15 @@ namespace Your_Room.Controllers
             var modelContext = _context.Apartmentsads.Include(a => a.AddressNavigation).Include(a => a.DurationNavigation).Include(a => a.UserinfoNavigation);
             return View(await modelContext.ToListAsync());
         }
+        public async Task<IActionResult> AllApartment()
+        {
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
+            var modelContext = _context.Apartmentsads.Where(i=> i.Userinfo== HttpContext.Session.GetInt32("Customer_Id")).Include(a => a.AddressNavigation).Include(a => a.DurationNavigation).Include(a => a.UserinfoNavigation);
+            return View(await modelContext.ToListAsync());
+        }
 
         // GET: Apartmentsads/Details/5
         public async Task<IActionResult> Details(decimal? id)

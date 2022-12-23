@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Tuple<IEnumerable<Your_Room.Models.Apartmentsad>,IEnumerable<Your_Room.Models.Furniture>>
+
+@{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Shared.cshtml";
     var Id = ViewBag.Customer_Id;
@@ -40,28 +42,77 @@ hr:after {
   <div class="site-block-wrap">
     <div class="owl-carousel with-dots">
       <div class="site-blocks-cover overlay overlay-2" style="background-image: url(../Assest/images/hero_1.jpg);" data-aos="fade" id="home-section">
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-6 mt-lg-5 text-center">
-              <h1 class="text-shadow">Buy &amp; Sell Property Here</h1>
-              <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p>
-              <p><a href="https://free-template.co" target="_blank" class="btn btn-primary px-5 py-3">Get Started</a></p>
-              
+          <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-6 mt-lg-5 text-center">
+                        <h1 class="text-shadow">
+                            Find your room at the best price.
+                        </h1>
+                        <p class="mb-5 text-shadow">
+                            Post an ad for anything you want in your room,
+                            Find your perfect roommate by posting your ad here.
+                        </p>
+                        @if (email != null)
+                        {
+                            <div class="dropdown">
+                                <button class="btn btn-primary px-3 py-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Create Your Ad
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-action="Create" asp-controller="Apartmentsads">Apartmentsads</a>
+                                    <a class="dropdown-item" asp-action="Create" asp-controller="Furnitures">Furnitures</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div >
+                                <a asp-action="Login" asp-controller="Auth" class="btn btn-primary px-3 py-3 dropdown-toggle" >
+                                    Create Your Ad
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>  
+
+
       </div>  
   
       <div class="site-blocks-cover overlay overlay-2" style="background-image: url(../Assest/images/hero_2.jpg);" data-aos="fade" id="home-section">
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-6 mt-lg-5 text-center">
-              <h1 class="text-shadow">Find Your Perfect Property For Your Home</h1>
-              <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p>
-              <p><a href="https://free-template.co" target="_blank" class="btn btn-primary px-5 py-3">Get Started</a></p>
+           <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-6 mt-lg-5 text-center">
+                        <h1 class="text-shadow">
+                            Find your room at the best price.
+                        </h1>
+                        <p class="mb-5 text-shadow">
+                            Post an ad for anything you want in your room,
+                            Find your perfect roommate by posting your ad here.
+                        </p>
+                        @if (email != null)
+                        {
+                            <div class="dropdown">
+                                <button class="btn btn-primary px-3 py-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Create Your Ad
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-action="Create" asp-controller="Apartmentsads">Apartmentsads</a>
+                                    <a class="dropdown-item" asp-action="Create" asp-controller="Furnitures">Furnitures</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div >
+                                <a asp-action="Login" asp-controller="Auth" class="btn btn-primary px-3 py-3 dropdown-toggle" >
+                                    Create Your Ad
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
       </div>  
     </div>   
   </div>
@@ -88,19 +139,20 @@ hr:after {
           </div>
           <div class="col-lg-6 ml-auto">
             
-            <h2 class="section-title mb-3">Warehouse Real Estate Template</h2>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit  Quo suscipit omnis iste velit maxime.</p>
+            <h2 class="section-title mb-3">Your Room</h2>
+                <p class="lead">We, The "Your room" Development Group.</p>
+                <p>have created a website to help students find their suitable rooms in terms of location, rent, and services available around it,
+                    and to facilitate the process of finding the appropriate room. We welcome you to use our website.</p>
 
                 <ul class="list-unstyled ul-check success">
-                  <li>Placeat maxime animi minus</li>
-                  <li>Dolore qui placeat maxime</li>
-                  <li>Consectetur adipisicing</li>
-                  <li>Lorem ipsum dolor</li>
-                  <li>Placeat molestias animi</li>
+                  <li>Register your own account </li>
+                  <li>Fill in your data </li>
+                  <li>Post your own ads </li>
+                  <li>Communication speed </li>
+                  <li>Find your ads </li>
                 </ul>
 
-                <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+                @*<p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>*@
             
           </div>
         </div>
@@ -124,67 +176,31 @@ hr:after {
         </div>
 
         <div class="owl-carousel nonloop-block-13 mb-5">
-
-            <div class="ftco-media-1">
-                <div class="ftco-media-1-inner">
-                  <a href="property-single.html" class="d-inline-block mb-4"><img src="~/Assest/images/property_1.jpg" alt="Image" class="img-fluid"></a>
-                  <div class="ftco-media-details">
-                    <h3>HD17 19 Utica Ave.</h3>
-                    <p>New York - USA</p>
-                    <strong>$20,000,000</strong>
-                  </div>
-    
-                </div> 
-              </div>
-
-
-              <div class="ftco-media-1">
-                  <div class="ftco-media-1-inner">
-                    <a href="property-single.html" class="d-inline-block mb-4"><img src="~/Assest/images/property_3.jpg" alt="Image" class="img-fluid"></a>
-                    <div class="ftco-media-details">
-                      <h3>HD17 19 Utica Ave.</h3>
-                      <p>New York - USA</p>
-                      <strong>$20,000,000</strong>
+             @foreach (var item in Model.Item1)
+            {
+            <div class="mb-5">
+                @if (@item.Image1 != null )
+                {
+                    <div class="ftco-media-1">
+                        <div class="ftco-media-1-inner">
+                            <a href="property-single.html" class="d-inline-block mb-4"><img src=@Url.Content("~/Image/"+@item.Image1) style="height:400px;width:330px;" alt="Image" class="img-fluid"></a>
+                            <div class="ftco-media-details">
+                                <h3>@item.Adtitel</h3>
+                                <p>@item.AddressNavigation.City </p>
+                                <strong>$@item.Price</strong>
+                            </div>
+                        </div> 
                     </div>
-      
-                  </div> 
-                </div>
-
-                <div class="ftco-media-1">
-                    <div class="ftco-media-1-inner">
-                      <a href="property-single.html" class="d-inline-block mb-4"><img src="~/Assest/images/property_1.jpg" alt="Image" class="img-fluid"></a>
-                      <div class="ftco-media-details">
-                        <h3>HD17 19 Utica Ave.</h3>
-                        <p>New York - USA</p>
-                        <strong>$20,000,000</strong>
-                      </div>
-        
-                    </div> 
-                  </div>
-
-
-                  <div class="ftco-media-1">
-                      <div class="ftco-media-1-inner">
-                        <a href="property-single.html" class="d-inline-block mb-4"><img src="~/Assest/images/property_2.jpg" alt="Image" class="img-fluid"></a>
-                        <div class="ftco-media-details">
-                          <h3>HD17 19 Utica Ave.</h3>
-                          <p>New York - USA</p>
-                          <strong>$20,000,000</strong>
-                        </div>
-          
-                      </div> 
-                    </div>
-
+                 }
+            </div>
+            }
         </div>
-        
       </div>
-
-    
       <center><p><a aasp-action="Index" asp-controller="Ads" class="btn btn-primary mr-2 mb-2">Browse More Ads</a></p></center> 
 
  
 
-     <section class="site-section bg-light bg-image" id="contact-section">
+@*     <section class="site-section bg-light bg-image" id="contact-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
@@ -261,94 +277,8 @@ hr:after {
         </div>
       </div>
     </section>
-
+*@
       
 
-   @* <div class="site-section" style="margin-top:-78px;" id="properties-section">
-      <div class="container">
-        <div class="row large-gutters">
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
-            <div class="ftco-media-1">
-              <div class="ftco-media-1-inner">
-                <a href="property-single.html" class="d-inline-block mb-4"><img style="height:490px;width:500px;" src="~/Assest/images/property_1.jpg"  alt="Free website template by Free-Template.co" class="img-fluid"></a>
-                <div class="ftco-media-details">
-                  <h3>HD17 19 Utica Ave.</h3>
-                  <p>New York - USA</p>
-                  <strong>$20,000,000</strong>
-                </div>
   
-              </div> 
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
-              <div class="ftco-media-1">
-                  <div class="ftco-media-1-inner">
-                    <a href="property-single.html" class="d-inline-block mb-4"><img style="height:490px;width:500px;" src="~/Assest/images/property_2.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-                    <div class="ftco-media-details">
-                      <h3>HD17 19 Utica Ave.</h3>
-                      <p>New York - USA</p>
-                      <strong>$20,000,000</strong>
-                    </div>
-      
-                  </div> 
-                </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
-              <div class="ftco-media-1">
-                  <div class="ftco-media-1-inner">
-                    <a href="property-single.html" class="d-inline-block mb-4"><img style="height:490px;width:500px;" src="~/Assest/images/property_3.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-                    <div class="ftco-media-details">
-                      <h3>HD17 19 Utica Ave.</h3>
-                      <p>New York - USA</p>
-                      <strong>$20,000,000</strong>
-                    </div>
-      
-                  </div> 
-                </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
-              <div class="ftco-media-1">
-                <div class="ftco-media-1-inner">
-                  <a href="property-single.html" class="d-inline-block mb-4"><img style="height:490px;width:500px;" src="~/Assest/images/property_1.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-                  <div class="ftco-media-details">
-                    <h3>HD17 19 Utica Ave.</h3>
-                    <p>New York - USA</p>
-                    <strong>$20,000,000</strong>
-                  </div>
-    
-                </div> 
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
-                <div class="ftco-media-1">
-                    <div class="ftco-media-1-inner">
-                      <a href="property-single.html" class="d-inline-block mb-4"><img style="height:490px;width:500px;" src="~/Assest/images/property_2.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-                      <div class="ftco-media-details">
-                        <h3>HD17 19 Utica Ave.</h3>
-                        <p>New York - USA</p>
-                        <strong>$20,000,000</strong>
-                      </div>
-        
-                    </div> 
-                  </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
-                <div class="ftco-media-1">
-                    <div class="ftco-media-1-inner">
-                      <a href="property-single.html" class="d-inline-block mb-4"><img style="height:490px;width:500px;" src="~/Assest/images/property_3.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-                      <div class="ftco-media-details">
-                        <h3>HD17 19 Utica Ave.</h3>
-                        <p>New York - USA</p>
-                        <strong>$20,000,000</strong>
-                      </div>
-        
-                    </div> 
-                  </div>
-            </div>
-
-        </div>
-      </div>
-    </div>*@
   

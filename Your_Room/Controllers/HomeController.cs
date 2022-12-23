@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,13 @@ namespace Your_Room.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ModelContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public HomeController(ILogger<HomeController> logger , ModelContext context, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
+            _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -25,7 +30,10 @@ namespace Your_Room.Controllers
             ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
             ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
             ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
-            return View();
+            var apartmentsads = _context.Apartmentsads.Include(a => a.AddressNavigation).Include(a => a.DurationNavigation).Include(a => a.UserinfoNavigation);
+            var furnitures = _context.Furnitures.Include(f => f.AddressNavigation).Include(f => f.UserinfoNavigation);
+            var model = Tuple.Create<IEnumerable<Apartmentsad>, IEnumerable<Furniture>>(apartmentsads, furnitures);
+            return View(model);
         }
 
         public IActionResult Privacy()

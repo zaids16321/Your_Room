@@ -28,7 +28,7 @@ namespace Your_Room.Controllers
             var modelContext = _context.Furnitures.Include(f => f.AddressNavigation).Include(f => f.UserinfoNavigation);
             return View(await modelContext.ToListAsync());
         }
-        // GET: Apartmentsads/Details/5
+       // GET: Apartmentsads/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)

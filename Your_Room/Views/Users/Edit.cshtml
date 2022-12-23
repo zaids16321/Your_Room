@@ -347,7 +347,7 @@
 </head>
 
 <body>
-    <div class="container-fluid" style="margin-left:500px">
+@*    <div class="container-fluid" style="margin-left:500px">
         <div class="col-sm-4">
             <nav class="navbar navbar-default" role="navigation" style=" color: white; width: 25em; background-color: #333333;">
                 <div class="navbar-header">
@@ -360,13 +360,14 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse-minus">
                     <ul class="nav navbar-nav navbar-right">                                    
-                        <li data-toggle="collapse" data-target="#navbar-collapse.in"><a asp-action="Create" asp-controller="Furnitures" style="color:white;">Apartmentsads</a></li>
-                        <li data-toggle="collapse" data-target="#navbar-collapse.in"><a asp-action="Create" asp-controller="Apartmentsads" style="color:white;">Furnitures</a></li>
+                        <li data-toggle="collapse" data-target="#navbar-collapse.in"><a asp-action="Create" asp-controller="Apartmentsads" style="color:white;">Apartmentsads</a></li>
+                        <li data-toggle="collapse" data-target="#navbar-collapse.in"><a asp-action="Create" asp-controller="Furnitures" style="color:white;">Furnitures</a></li>
                     </ul>
                 </div><!-- .navbar-collapse -->                            
             </nav>
         </div>
-    </div>
+    </div>*@
+   <a asp-action="AllAds" asp-controller="Ads">Ads </a>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
