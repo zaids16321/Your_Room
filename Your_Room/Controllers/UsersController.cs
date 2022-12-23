@@ -124,11 +124,20 @@ namespace Your_Room.Controllers
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
                             user.ImageFile.CopyTo(fileStream);
+                            
                         }
                         user.UserImage = fileName;
-                    }
-                    _context.Update(user);
+                        HttpContext.Session.SetString("Customer_Image",user.UserImage);
+                        _context.Update(user);
                     await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        user.UserImage = HttpContext.Session.GetString("Customer_Image");
+                        _context.Update(user);
+                        await _context.SaveChangesAsync();
+                    }
+             
                     var login = _context.Logins.Where(u => u.Userid == id).FirstOrDefault();
                     if (user.Password != null)
                     {

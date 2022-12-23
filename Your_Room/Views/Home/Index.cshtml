@@ -183,7 +183,7 @@ hr:after {
                 {
                     <div class="ftco-media-1">
                         <div class="ftco-media-1-inner">
-                            <a href="property-single.html" class="d-inline-block mb-4"><img src=@Url.Content("~/Image/"+@item.Image1) style="height:400px;width:330px;" alt="Image" class="img-fluid"></a>
+                            <a asp-action="Details" asp-controller="Apartmentsads" asp-route-id="@item.Adid" class="d-inline-block mb-4"><img src=@Url.Content("~/Image/"+@item.Image1) style="height:400px;width:330px;" alt="Image" class="img-fluid"></a>
                             <div class="ftco-media-details">
                                 <h3>@item.Adtitel</h3>
                                 <p>@item.AddressNavigation.City </p>
@@ -196,7 +196,7 @@ hr:after {
             }
         </div>
       </div>
-      <center><p><a aasp-action="Index" asp-controller="Ads" class="btn btn-primary mr-2 mb-2">Browse More Ads</a></p></center> 
+      <center><p><a asp-action="Index" asp-controller="Ads" class="btn btn-primary mr-2 mb-2">Browse More Ads</a></p></center> 
 
  
 

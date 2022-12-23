@@ -85,7 +85,10 @@ namespace Your_Room.Controllers
                 //HttpContext.Session.SetString("Admin_Image", auth.User.UserImage);
                 HttpContext.Session.SetInt32("Customer_Id", (int)auth.Userid);
                 HttpContext.Session.SetString("Customer_Name", auth.User.FullName);
-                //HttpContext.Session.SetString("Customer_Image", auth.User.UserImage);
+                if (auth.User.UserImage != null)
+                {
+                    HttpContext.Session.SetString("Customer_Image", auth.User.UserImage);
+                }
                 HttpContext.Session.SetString("Customer_Email", auth.Email);
                 return RedirectToAction("Index", "Home");
             }

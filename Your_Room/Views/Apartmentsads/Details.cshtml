@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_PagesLayout1.cshtml";
+      Layout = "~/Views/Shared/_PagesLayout1.cshtml";
         var Id = ViewBag.Customer_Id;
     var Name = ViewBag.Customer_Name;
     var email = ViewBag.Customer_Email;
@@ -78,7 +78,12 @@
               @*<p>@Model.UserinfoNavigation.Phonenumber Phone number of Lessor.</p>*@
 
             </div>
-
+            @if (Id==Model.UserinfoNavigation.Userid)
+           {
+               
+            <a asp-action="Edit" asp-controller="Apartmentsads" asp-route-id="@Model.Adid" class="btn btn-primary mr-2 mb-2">Edit</a>
+           
+           }
           </div>
         </div>
       </div>
