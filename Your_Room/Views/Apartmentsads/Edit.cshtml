@@ -9,10 +9,7 @@
     var email = ViewBag.Customer_Email;
     var Img = ViewBag.Customer_Image;
 }
-
-
-
-@*<!DOCTYPE html>
+<!DOCTYPE html>
 
 <!-- =========================================================
 * Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
@@ -91,206 +88,164 @@
                             <div class="col-12">
                                 <div class="card mb-4">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="mb-0">Basic Layout</h5>
-                                        <small class="text-muted float-end">Default label</small>
+                                        <h5 class="mb-0">Edit Apartment</h5>
+                                        @*<small class="text-muted float-end">Default label</small>*@
                                     </div>
                                     <div class="card-body">
                                        
-                                        <form asp-action="Edit" enctype="multipart/form-data">
+                                          <form asp-action="Edit" asp-controller="Apartmentsads"  enctype="multipart/form-data">
                                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                            <div class="row ">
+                                            <input type="hidden" asp-for="Adid" />
+                                            <div class="row">
                                                 <div class="col-sm-6">
 
 
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Adtitel" class="col-sm-4 col-form-label">Title</label>
-
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Adtitel" class="form-control" placeholder="Apretment for Rent .." />
+                                                            <input asp-for="Adtitel" type="text" class="form-control" placeholder="Apretment for Rent .." required />
+                                                            <span asp-validation-for="Adtitel" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Price" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Price" class="form-control" placeholder="Price In JOD" />
-
+                                                            <input asp-for="Price" type="number" class="form-control" placeholder="Price In JOD" required />
+                                                            <span asp-validation-for="Price" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
-
                                                     <div class="row mb-3">
                                                         <label asp-for="Descriptions" class="col-sm-4 col-form-label">Descriptions</label>
-
                                                         <div class="col-sm-8">
-                                                            <textarea asp-for="Descriptions" class="form-control" placeholder="Details of your Ad">
+                                                            <textarea asp-for="Descriptions" class="form-control" required placeholder="Details of your Ad">
                                                         </textarea>
+                                                        <span asp-validation-for="Descriptions" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
-
                                                     <div class="row mb-3">
                                                         <label asp-for="Numofperson" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Numofperson" class="form-control" placeholder="4 ,3 ,2 ..person" />
-
+                                                            <input asp-for="Numofperson" type="number" class="form-control" placeholder="4 ,3 ,2 ..person" required />
+                                                            <span asp-validation-for="Numofperson" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
-
-
-
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Numofroom" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Numofroom" class="form-control" placeholder="4 ,3 ,2 ..Room" />
-
+                                                            <input asp-for="Numofroom" type="number" class="form-control" placeholder="4 ,3 ,2 ..Room" required/>
+                                                            <span asp-validation-for="Numofroom" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
-
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Numofbed" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Numofbed" class="form-control" placeholder="4 ,3 ,2 ..Bed" />
-
+                                                            <input asp-for="Numofbed" type="number" class="form-control" placeholder="4 ,3 ,2 ..Bed"required />
+                                                            <span asp-validation-for="Numofbed" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Address" class="col-sm-4 col-form-label">City</label>
                                                         <div class="col-sm-8">
                                                             <select asp-for="Address" class="form-control" asp-items="ViewBag.Address" placeholder="City"></select>
 
                                                         </div>
-
                                                     </div>
-
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Street" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Street" class="form-control" placeholder="Al-Madina.ST" />
-
+                                                            <input asp-for="Street" type="text" class="form-control" placeholder="Al-Madina.ST"required />
+                                                            <span asp-validation-for="Street" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
                                                     <div class="row mb-3">
-
                                                         <label asp-for="BuildingNumber" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="BuildingNumber" class="form-control"placeholder="8" />
-
+                                                            <input asp-for="BuildingNumber"type="number" class="form-control"placeholder="8"required />
+                                                            <span asp-validation-for="BuildingNumber" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Electricitybillprice" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Electricitybillprice" class="form-control" placeholder="Price In JOD" />
-
+                                                            <input asp-for="Electricitybillprice" type="number" class="form-control" placeholder="Price In JOD"  />
+                                                            <span asp-validation-for="Electricitybillprice" class="text-danger"></span>
                                                         </div>
-
                                                     </div>
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Waterbillprice" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Waterbillprice" class="form-control"placeholder="Price In JOD" />
-
+                                                            <input asp-for="Waterbillprice" type="number" class="form-control"placeholder="Price In JOD" />
+                                                            <span asp-validation-for="Waterbillprice" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
-
                                                         <label asp-for="Duration" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
                                                            <select asp-for="Duration" class="form-control" asp-items="ViewBag.Duration"  ></select>
 
                                                         </div>
-
                                                     </div>
-
-
-
-
-
-
                                                 </div>
-
-
-
 
                                                 <div class="col-sm-6">
                                                     <div class="row mb-3">
-                                                          <label asp-for="Image1" class="form-label"></label>
+                                                          <label asp-for="ImageFile1" class="form-label"></label>
                                                         <div class="col-sm-12">
-                                                             <input asp-for="ImageFile1" class="form-control" placeholder="Image1" />
+                                                             <input asp-for="ImageFile1" class="form-control" placeholder="Image1"  />
+                                                             <span asp-validation-for="ImageFile1" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
-                                                            <label asp-for="Image2" class="form-label"></label>
+                                                            <label asp-for="ImageFile2" class="form-label"></label>
                                                         <div class="col-sm-12">
-                                                             <input asp-for="ImageFile2" class="form-control" placeholder="Image1" />
+                                                             <input asp-for="ImageFile2" class="form-control" placeholder="Image1"  />
+                                                             <span asp-validation-for="ImageFile2" class="text-danger"></span>
                                                         </div>
                                                     </div>
-
                                                      <div class="row mb-3">
-                                                           <label asp-for="Image3" class="form-label"></label>
+                                                           <label asp-for="ImageFile3" class="form-label"></label>
                                                         <div class="col-sm-12">
                                                              <input asp-for="ImageFile3" class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
-                                                         <label asp-for="Image4" class="form-label"></label>
+                                                         <label asp-for="ImageFile4" class="form-label"></label>
                                                         <div class="col-sm-12">
                                                              <input asp-for="ImageFile4" class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
-                                                           <label asp-for="Image5" class="form-label"></label>
+                                                           <label asp-for="ImageFile5" class="form-label"></label>
                                                         <div class="col-sm-12">
                                                              <input asp-for="ImageFile5" class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
-                                                           <label asp-for="Image6" class="form-label"></label>
+                                                           <label asp-for="ImageFile6" class="form-label"></label>
                                                         <div class="col-sm-12">
                                                              <input asp-for="ImageFile6" class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
-                                                            <label asp-for="Image7" class="form-label"></label>
+                                                            <label asp-for="ImageFile7" class="form-label"></label>
                                                         <div class="col-sm-12">
                                                              <input asp-for="ImageFile7" class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
-                                                         <label asp-for="Image8" class="form-label"></label>
+                                                         <label asp-for="ImageFile8" class="form-label"></label>
                                                         <div class="col-sm-12">
                                                              <input asp-for="ImageFile8" class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <br />
-                                                        <br />
-                                                                  <br />
-                                          
-                                                  
-                                             
-                                                         <div class="d-grid gap-2 col-lg-12 mx-auto">
+                                                <br />
+                                                <br />
+                                                    <div class="d-grid gap-2 col-lg-12 mx-auto">
                                                         <input type="submit" value="Save" class="btn btn-primary btn-lg" />
                                                     </div>
-                                                   
-                                                 
                                                 </div>
-                                           
                                         </form>
                                     </div>
                                 </div>
@@ -332,8 +287,8 @@
 </html>
 
 
-*@
 
+@*
 <h1>Edit</h1>
 
 <h4>Apartmentsad</h4>
@@ -464,3 +419,4 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+*@

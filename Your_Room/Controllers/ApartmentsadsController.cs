@@ -227,8 +227,8 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid", apartmentsad.Address);
-            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Id", apartmentsad.Duration);
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", apartmentsad.Address);
+            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration", apartmentsad.Duration);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", apartmentsad.Userinfo);
             return View(apartmentsad);
         }
@@ -264,13 +264,15 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image1 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image1);
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        apartmentsad.Image1 = HttpContext.Session.GetString("Customer_Image");
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo= HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate= DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
@@ -287,13 +289,15 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image2 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image2);
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        apartmentsad.Image2 = HttpContext.Session.GetString("Customer_Image");
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
@@ -310,13 +314,15 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image3 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image3);
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        apartmentsad.Image3 = HttpContext.Session.GetString("Customer_Image");
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
@@ -333,13 +339,15 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image4 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image4);
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        apartmentsad.Image4 = HttpContext.Session.GetString("Customer_Image");
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
@@ -356,16 +364,19 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image5 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image5);
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
-                    else
-                    {
-                        apartmentsad.Image5 = HttpContext.Session.GetString("Customer_Image");
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
+
                     if (apartmentsad.ImageFile6 != null)
                     {
                         string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
@@ -378,16 +389,19 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image6 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image6);
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
-                    else
-                    {
-                        apartmentsad.Image6 = HttpContext.Session.GetString("Customer_Image");
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
+
                     if (apartmentsad.ImageFile7 != null)
                     {
                         string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
@@ -400,16 +414,19 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image7 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image7);
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
-                    else
-                    {
-                        apartmentsad.Image7 = HttpContext.Session.GetString("Customer_Image");
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
-                    }
+
                     if (apartmentsad.ImageFile8 != null)
                     {
                         string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
@@ -422,16 +439,44 @@ namespace Your_Room.Controllers
 
                         }
                         apartmentsad.Image8 = fileName;
-                        HttpContext.Session.SetString("Customer_Image", apartmentsad.Image8);
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        apartmentsad.Addate = DateTime.Now;
                         _context.Update(apartmentsad);
                         await _context.SaveChangesAsync();
                     }
-                    else
+                    //else
+                    //{
+                    //    //apartmentsad.Image8 = HttpContext.Session.GetString("Customer_Image");
+                    //    apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                    //    apartmentsad.Addate = DateTime.Now;
+                    //    _context.Update(apartmentsad);
+                    //    await _context.SaveChangesAsync();
+                    //}
+                    if (apartmentsad.ImageFile1 == null && apartmentsad.ImageFile2 == null && apartmentsad.ImageFile3 == null &&
+                        apartmentsad.ImageFile4 == null && apartmentsad.ImageFile5 == null && apartmentsad.ImageFile6 == null &&
+                        apartmentsad.ImageFile7 == null && apartmentsad.ImageFile8 == null )
                     {
-                        apartmentsad.Image8 = HttpContext.Session.GetString("Customer_Image");
-                        _context.Update(apartmentsad);
-                        await _context.SaveChangesAsync();
+                        apartmentsad.Image1 = _context.Apartmentsads.Where(i=>i.Adid== apartmentsad.Adid).Select(u => u.Image1).FirstOrDefault();
+                        apartmentsad.Image2 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image2).FirstOrDefault();
+                        apartmentsad.Image3 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image3).FirstOrDefault();
+                        apartmentsad.Image4 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image4).FirstOrDefault();
+                        apartmentsad.Image5 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image5).FirstOrDefault();
+                        apartmentsad.Image6 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image6).FirstOrDefault();
+                        apartmentsad.Image7 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image7).FirstOrDefault();
+                        apartmentsad.Image8 = _context.Apartmentsads.Where(i => i.Adid == apartmentsad.Adid).Select(u => u.Image8).FirstOrDefault();
                     }
+                    apartmentsad.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                    apartmentsad.Addate = DateTime.Now;
+                    _context.Update(apartmentsad);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("AllAds", "Ads");
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -447,8 +492,8 @@ namespace Your_Room.Controllers
                 }
              
             }
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid", apartmentsad.Address);
-            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Id", apartmentsad.Duration);
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", apartmentsad.Address);
+            ViewData["Duration"] = new SelectList(_context.Durations, "Id", "Rentalduration", apartmentsad.Duration);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", apartmentsad.Userinfo);
             return View(apartmentsad);
         }

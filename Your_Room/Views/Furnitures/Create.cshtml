@@ -173,7 +173,7 @@
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4>
+                        @*<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4>*@
 
                         <!-- Basic Layout & Basic with Icons -->
                         <div class="row">
@@ -181,8 +181,8 @@
                             <div class="col-12">
                                 <div class="card mb-4">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="mb-0">Basic Layout</h5>
-                                        <small class="text-muted float-end">Default label</small>
+                                        <h5 class="mb-0">Create Furniture  Ad</h5>
+                                        @*<small class="text-muted float-end">Default label</small>*@
                                     </div>
                                     <div class="card-body">
                                        
@@ -197,7 +197,7 @@
                                                         <label asp-for="Ftitel" class="col-sm-4 col-form-label">Title</label>
 
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Ftitel" class="form-control" placeholder="Apretment for Rent .." />
+                                                            <input asp-for="Ftitel" class="form-control" required placeholder="Apretment for Rent .." />
                                                         </div>
 
                                                     </div>
@@ -205,17 +205,17 @@
 
                                                         <label asp-for="Price" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Price" class="form-control" placeholder="Price In JOD" />
+                                                            <input asp-for="Price" class="form-control" required placeholder="Price In JOD" />
 
                                                         </div>
 
                                                     </div>
 
                                                     <div class="row mb-3">
-                                                        <label asp-for="Descriptions" class="col-sm-4 col-form-label">Descriptions</label>
+                                                        <label asp-for="Descriptions"  class="col-sm-4 col-form-label">Descriptions</label>
 
                                                         <div class="col-sm-8">
-                                                            <textarea asp-for="Descriptions" class="form-control" placeholder="Details of your Ad">
+                                                            <textarea asp-for="Descriptions" required class="form-control" placeholder="Details of your Ad">
                                                         </textarea>
                                                         </div>
 
@@ -238,7 +238,7 @@
 
                                                         <label asp-for="Street" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="Street" class="form-control" placeholder="Al-Madina.ST" />
+                                                            <input asp-for="Street" class="form-control" required placeholder="Al-Madina.ST" />
 
                                                         </div>
 
@@ -247,7 +247,7 @@
 
                                                         <label asp-for="BuildingNumber" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
-                                                            <input asp-for="BuildingNumber" class="form-control"placeholder="8" />
+                                                            <input asp-for="BuildingNumber" required class="form-control"placeholder="8" />
 
                                                         </div>
 
@@ -270,13 +270,13 @@
                                                     <div class="row mb-3">
                                                        
                                                         <div class="col-sm-12">
-                                                             <input asp-for="ImageFile1" class="form-control" placeholder="Image1" />
+                                                             <input asp-for="ImageFile1" required class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
                                                           
                                                         <div class="col-sm-12">
-                                                             <input asp-for="ImageFile2" class="form-control" placeholder="Image1" />
+                                                             <input asp-for="ImageFile2" required class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
 

@@ -367,7 +367,8 @@
             </nav>
         </div>
     </div>*@
-   <a asp-action="AllAds" asp-controller="Ads">Ads </a>
+   <div class="d-grid gap-2 col-lg-6 mx-auto">
+   </div>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -388,8 +389,10 @@
                             <div class="col-12">
                                 <div class="card mb-4">
                                     <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5 class="mb-0">Basic Layout</h5>
-                                        <small class="text-muted float-end">Default label</small>
+                                        <h5 class="mb-0">Profile</h5>
+                                        <a asp-action="AllAds" asp-controller="Ads" class="btn btn-primary btn-lg">Ads </a>
+
+                                        @*<small class="text-muted float-end">Default label</small>*@
                                     </div>
                                     <div class="card-body">
                                     @*    <form asp-action="Create" enctype="multipart/form-data">*@
@@ -402,30 +405,35 @@
                                                         <label asp-for="FullName" class="col-sm-4 col-form-label">FullName</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="FullName" type="text" class="form-control" placeholder="FullName.."required />
+                                                            <span asp-validation-for="FullName" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label asp-for="Email" class="col-sm-4 col-form-label">Email</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Email" type="email" required class="form-control" placeholder="aaa@gmail.com" />
+                                                            <span asp-validation-for="Email" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label asp-for="Password" class="col-sm-4 col-form-label">Password</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Password" type="text" required class="form-control" placeholder="....." />
+                                                            <span asp-validation-for="Password" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label asp-for="Phonenumber" class="col-sm-4 col-form-label">Phonenumber</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Phonenumber" type="tel" required class="form-control" placeholder="00000000" />
+                                                            <span asp-validation-for="Phonenumber" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label asp-for="ImageFile" class="col-sm-4 col-form-label"></label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="ImageFile"  class="form-control"  placeholder="Image"/>
+                                                            <span asp-validation-for="ImageFile" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
@@ -441,18 +449,21 @@
                                                         <label asp-for="Gender" class="col-sm-4 col-form-label">Gender</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Gender"  class="form-control" placeholder="Gender"disabled />
+                                                            <span asp-validation-for="Gender" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label asp-for="Age" class="col-sm-4 col-form-label">Age</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Age" type="number" required class="form-control"  placeholder="Age"/>
+                                                            <span asp-validation-for="Age" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label asp-for="Usertype" class="col-sm-4 col-form-label">Usertype</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Usertype"  class="form-control" placeholder="Usertype" disabled />
+                                                            <span asp-validation-for="Usertype" class="text-danger"></span>
                                                         </div>
                                                     </div>
                                                 </div>

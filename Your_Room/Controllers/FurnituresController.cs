@@ -35,7 +35,10 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
+            ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
+            ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var furnitures = await _context.Furnitures
                 .Include(a => a.AddressNavigation)
                 //.Include(a => a.DurationNavigation)
@@ -210,7 +213,7 @@ namespace Your_Room.Controllers
             {
                 return NotFound();
             }
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid", furniture.Address);
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", furniture.Address);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", furniture.Userinfo);
             return View(furniture);
         }
@@ -234,8 +237,231 @@ namespace Your_Room.Controllers
             {
                 try
                 {
+                    if (furniture.ImageFile1 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile1.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile1.CopyTo(fileStream);
+
+                        }
+                        furniture.Image1 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile2 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile2.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile2.CopyTo(fileStream);
+
+                        }
+                        furniture.Image2 = fileName;
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile3 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile3.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile3.CopyTo(fileStream);
+
+                        }
+                        furniture.Image3 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile4 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile4.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile4.CopyTo(fileStream);
+
+                        }
+                        furniture.Image4 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile5 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile5.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile5.CopyTo(fileStream);
+
+                        }
+                        furniture.Image5 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile6 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile6.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile6.CopyTo(fileStream);
+
+                        }
+                        furniture.Image6 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile7 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile7.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile7.CopyTo(fileStream);
+
+                        }
+                        furniture.Image7 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    if (furniture.ImageFile8 != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath; // wwwroot 
+                        string fileName = Guid.NewGuid().ToString() + "_" + furniture.ImageFile8.FileName; // sffjhfbvjhbjskdnklnklnlk_picture 
+                        string path = Path.Combine(wwwRootPath + "/Image/", fileName); // wwwroot/image/filename
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            furniture.ImageFile8.CopyTo(fileStream);
+
+                        }
+                        furniture.Image8 = fileName;
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                        furniture.Fdate = DateTime.Now;
+                        _context.Update(furniture);
+                        await _context.SaveChangesAsync();
+                    }
+                    //else
+                    //{
+                    //    //apartmentsad.Image8 = HttpContext.Session.GetString("Customer_Image");
+                    //    furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                    //    furniture.Fdate = DateTime.Now;
+                    //    _context.Update(furniture);
+                    //    await _context.SaveChangesAsync();
+                    //}
+                    if (furniture.ImageFile1 == null && furniture.ImageFile2 == null && furniture.ImageFile3 == null &&
+                        furniture.ImageFile4 == null && furniture.ImageFile5 == null && furniture.ImageFile6 == null &&
+                        furniture.ImageFile7 == null && furniture.ImageFile8 == null)
+                    {
+                        furniture.Image1 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image1).FirstOrDefault();
+                        furniture.Image2 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image2).FirstOrDefault();
+                        furniture.Image3 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image3).FirstOrDefault();
+                        furniture.Image4 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image4).FirstOrDefault();
+                        furniture.Image5 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image5).FirstOrDefault();
+                        furniture.Image6 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image6).FirstOrDefault();
+                        furniture.Image7 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image7).FirstOrDefault();
+                        furniture.Image8 = _context.Furnitures.Where(i => i.Fid == furniture.Fid).Select(u => u.Image8).FirstOrDefault();
+                    }
+                    furniture.Userinfo = HttpContext.Session.GetInt32("Customer_Id");
+                    furniture.Fdate = DateTime.Now;
                     _context.Update(furniture);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction("AllAds", "Ads");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -248,9 +474,9 @@ namespace Your_Room.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                
             }
-            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "Addresid", furniture.Address);
+            ViewData["Address"] = new SelectList(_context.Addresses, "Addresid", "City", furniture.Address);
             ViewData["Userinfo"] = new SelectList(_context.Users, "Userid", "Userid", furniture.Userinfo);
             return View(furniture);
         }

@@ -27,7 +27,7 @@ namespace Your_Room.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
-            ViewBag.Customer_Name = HttpContext.Session.GetInt32("Customer_Name");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
             ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
             ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
 
@@ -84,7 +84,7 @@ namespace Your_Room.Controllers
                 return NotFound();
             }
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
-            ViewBag.Customer_Name = HttpContext.Session.GetInt32("Customer_Name");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
             ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
             ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             var user = await _context.Users.FindAsync(id);
@@ -103,7 +103,7 @@ namespace Your_Room.Controllers
         public async Task<IActionResult> Edit(decimal id, User user )
         {
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
-            ViewBag.Customer_Name = HttpContext.Session.GetInt32("Customer_Name");
+            ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
             ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
             ViewBag.Customer_Email = HttpContext.Session.GetString("Customer_Email");
             if (id != user.Userid)
