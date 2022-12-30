@@ -505,8 +505,8 @@ namespace Your_Room.Controllers
         }
 
         // POST: Furnitures/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
@@ -516,7 +516,7 @@ namespace Your_Room.Controllers
             var furniture = await _context.Furnitures.FindAsync(id);
             _context.Furnitures.Remove(furniture);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("AllAds", "Ads");
         }
 
         private bool FurnitureExists(decimal id)

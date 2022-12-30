@@ -72,14 +72,14 @@
                 @*<li><a href="#contact-section" class="nav-link">Contact</a></li>*@
                     @if (email!=null)
                {
-                 <li><a asp-action="Edit" asp-controller="Users"  asp-route-id="@Id" asp-area="MicrosoftIdentity"  >@ViewBag.Customer_Name Profile </a> </li>
+                 <li><a asp-action="Index" asp-controller="Users"  asp-route-id="@Id" asp-area="MicrosoftIdentity"  class="nav-link">@ViewBag.Customer_Name Profile </a> </li>
       
-                 <li><a asp-controller="Auth" asp-area="MicrosoftIdentity" asp-action="Logout" class="nav-link" >Logout</a></li>                    
+                 <li><a asp-controller="Auth" asp-area="MicrosoftIdentity" asp-action="Logout" class="nav-link" class="nav-link">Logout</a></li>                    
                }
                else
                {  
-                   <li><a asp-action="Login" asp-controller="Auth" class="nav-link">Login</a></li>
-                  <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+                   <li><a asp-action="Login" asp-controller="Auth" class="nav-link" class="nav-link">Login</a></li>
+                  <li><a asp-controller="Auth" asp-action="Register" class="nav-link">Register</a></li>
                }
               </ul>
             </nav>

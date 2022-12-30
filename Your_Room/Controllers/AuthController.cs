@@ -80,6 +80,7 @@ namespace Your_Room.Controllers
             var auth = _context.Logins.Include(z => z.User).Where(x => x.Email == login.Email && x.Password == login.Password).SingleOrDefault();
             if (auth != null)
             {
+                HttpContext.Session.Remove("messageLogIn");
                 //HttpContext.Session.SetInt32("Admin_Id", (int)auth.Userid);
                 //HttpContext.Session.SetString("Admin_Name", auth.Email);
                 //HttpContext.Session.SetString("Admin_Image", auth.User.UserImage);
@@ -92,6 +93,11 @@ namespace Your_Room.Controllers
                 HttpContext.Session.SetString("Customer_Email", auth.Email);
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                HttpContext.Session.SetString("messageLogIn", "Email or Password is wrong");
+                ViewBag.error = HttpContext.Session.GetString("messageLogIn");
+            }
 
 
             return View();
@@ -99,6 +105,8 @@ namespace Your_Room.Controllers
 
         public IActionResult Login()
         {
+            ViewBag.error = HttpContext.Session.GetString("messageLogIn");
+            HttpContext.Session.Remove("messageLogIn");
             return View();
         }
         public IActionResult Logout()

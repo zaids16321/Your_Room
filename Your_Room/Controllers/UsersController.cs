@@ -127,6 +127,8 @@ namespace Your_Room.Controllers
                             
                         }
                         user.UserImage = fileName;
+                        user.Gender= _context.Users.Where(i => i.Userid == user.Userid).Select(u => u.Gender).FirstOrDefault();
+                        user.Usertype= _context.Users.Where(i => i.Userid == user.Userid).Select(u => u.Usertype).FirstOrDefault();
                         HttpContext.Session.SetString("Customer_Image",user.UserImage);
                         _context.Update(user);
                     await _context.SaveChangesAsync();
@@ -134,6 +136,8 @@ namespace Your_Room.Controllers
                     else
                     {
                         user.UserImage = HttpContext.Session.GetString("Customer_Image");
+                        user.Gender = _context.Users.Where(i => i.Userid == user.Userid).Select(u => u.Gender).FirstOrDefault();
+                        user.Usertype = _context.Users.Where(i => i.Userid == user.Userid).Select(u => u.Usertype).FirstOrDefault();
                         _context.Update(user);
                         await _context.SaveChangesAsync();
                     }

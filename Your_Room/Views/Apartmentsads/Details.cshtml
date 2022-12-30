@@ -57,32 +57,30 @@
                         <img src=@Url.Content("~/Image/"+@Model.UserinfoNavigation.UserImage) style="width: 100px; height: 100px; " alt="Image" class="border rounded-circle p-2 mx-auto mb-3">
                             
                         }
-                        <h4 class="text-black">Name:@Model.UserinfoNavigation.FullName </h4>
-                <p class="text-muted mb-4">@Model.UserinfoNavigation.Usertype / Phone @Model.UserinfoNavigation.Phonenumber</p>
+                        <h4 class="text-black">Name: @Model.UserinfoNavigation.FullName </h4>
+                <p class="text-muted mb-4">@Model.UserinfoNavigation.Usertype / Phone: <b>@Model.UserinfoNavigation.Phonenumber</b></p>
               </div>
             </div>
             <hr />
             <div class="mb-5">
               <h3 class="text-black mb-4">@Model.Adtitel</h3>
-              <p>@Model.Numofroom Room, @Model.Numofbed Beds, @Model.Numofperson Person, <br />@Model.Addate Announcement date</p>
-              <p><b>Price: $@Model.Price</b></p>
-
-              <p>@Model.Descriptions</p>
+              <p><b>@Model.Numofroom Room, @Model.Numofbed Beds, @Model.Numofperson Person</b>, <br /><b>Ad Date:</b> @Model.Addate </p>
+              <p><b>Price: $</b>@Model.Price</p>
+              <p><b>City: </b>@Model.AddressNavigation.City.</p>
+              <p><b>Descriptions:</b> @Model.Descriptions</p>
               <p><b>Street:</b> @Model.Street.</p>
-              <p><b>Building Number:</b>@Model.BuildingNumber.</p>
-              <p><b>Electricity bill price:</b>$@Model.Electricitybillprice.</p>
-              <p><b>Water bill price:</b>$@Model.Waterbillprice.</p>
-              <p><b>City:</b>@Model.AddressNavigation.City.</p>
-              <p><b>Rental Duration:</b>@Model.DurationNavigation.Rentalduration Rentalduration.</p>
+              <p><b>Building Number: </b>@Model.BuildingNumber.</p>
+              <p><b>Electricity bill price: </b>$@Model.Electricitybillprice.</p>
+              <p><b>Water bill price: </b>$@Model.Waterbillprice.</p>
+              <p><b>Rental Duration: </b>@Model.DurationNavigation.Rentalduration Rentalduration.</p>
               @*<p>@Model.UserinfoNavigation.FullName Name of Lessor.</p>*@
               @*<p>@Model.UserinfoNavigation.Phonenumber Phone number of Lessor.</p>*@
 
             </div>
             @if (Id==Model.UserinfoNavigation.Userid)
            {
-               
             <a asp-action="Edit" asp-controller="Apartmentsads" asp-route-id="@Model.Adid" class="btn btn-primary mr-2 mb-2">Edit</a>
-           
+            <a asp-action="DeleteConfirmed" asp-controller="Apartmentsads" asp-route-id="@Model.Adid" class="btn btn-danger mr-2 mb-2">Delete</a> 
            }
           </div>
         </div>

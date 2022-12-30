@@ -9,133 +9,6 @@
     var Img = ViewBag.Customer_Image;
 }
 
-@*<h1>Create</h1>
-
-<h4>Apartmentsad</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Adtitel" class="control-label"></label>
-                <input asp-for="Adtitel" class="form-control" />
-                <span asp-validation-for="Adtitel" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Addate" class="control-label"></label>
-                <input asp-for="Addate" class="form-control" />
-                <span asp-validation-for="Addate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descriptions" class="control-label"></label>
-                <input asp-for="Descriptions" class="form-control" />
-                <span asp-validation-for="Descriptions" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Numofperson" class="control-label"></label>
-                <input asp-for="Numofperson" class="form-control" />
-                <span asp-validation-for="Numofperson" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Numofroom" class="control-label"></label>
-                <input asp-for="Numofroom" class="form-control" />
-                <span asp-validation-for="Numofroom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Numofbed" class="control-label"></label>
-                <input asp-for="Numofbed" class="form-control" />
-                <span asp-validation-for="Numofbed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <select asp-for="Address" class="form-control" asp-items="ViewBag.Address"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Street" class="control-label"></label>
-                <input asp-for="Street" class="form-control" />
-                <span asp-validation-for="Street" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BuildingNumber" class="control-label"></label>
-                <input asp-for="BuildingNumber" class="form-control" />
-                <span asp-validation-for="BuildingNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Electricitybillprice" class="control-label"></label>
-                <input asp-for="Electricitybillprice" class="form-control" />
-                <span asp-validation-for="Electricitybillprice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Waterbillprice" class="control-label"></label>
-                <input asp-for="Waterbillprice" class="form-control" />
-                <span asp-validation-for="Waterbillprice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <select asp-for="Duration" class="form-control" asp-items="ViewBag.Duration"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile1" class="control-label"></label>
-                <input asp-for="ImageFile1" class="form-control" />
-                <span asp-validation-for="ImageFile1" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ImageFile2" class="control-label"></label>
-                <input asp-for="ImageFile2" class="form-control" />
-                <span asp-validation-for="Image2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile3" class="control-label"></label>
-                <input asp-for="ImageFile3" class="form-control" />
-                <span asp-validation-for="Image3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile4" class="control-label"></label>
-                <input asp-for="ImageFile4" class="form-control" />
-                <span asp-validation-for="Image4" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile5" class="control-label"></label>
-                <input asp-for="ImageFile5" class="form-control" />
-                <span asp-validation-for="Image5" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile6" class="control-label"></label>
-                <input asp-for="ImageFile6" class="form-control" />
-                <span asp-validation-for="Image6" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile7" class="control-label"></label>
-                <input asp-for="ImageFile7" class="form-control" />
-                <span asp-validation-for="Image7" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile8" class="control-label"></label>
-                <input asp-for="ImageFile8" class="form-control" />
-                <span asp-validation-for="Image8" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Userinfo" class="control-label"></label>
-                <select asp-for="Userinfo" class="form-control" asp-items="ViewBag.Userinfo"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>*@
-
-
-
-
-
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -256,7 +129,7 @@
                                                     </div>
 
                                                     <div class="row mb-3">
-                                                        <label asp-for="Numofperson" class="col-sm-4 col-form-label"></label>
+                                                        <label asp-for="Numofperson" class="col-sm-4 col-form-label">Number of person</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Numofperson" class="form-control"required placeholder="4 ,3 ,2 ..person" />
 
@@ -268,7 +141,7 @@
 
                                                     <div class="row mb-3">
 
-                                                        <label asp-for="Numofroom" class="col-sm-4 col-form-label"></label>
+                                                        <label asp-for="Numofroom" class="col-sm-4 col-form-label">Number of room</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Numofroom" class="form-control"required placeholder="4 ,3 ,2 ..Room" />
 
@@ -278,7 +151,7 @@
 
                                                     <div class="row mb-3">
 
-                                                        <label asp-for="Numofbed" class="col-sm-4 col-form-label"></label>
+                                                        <label asp-for="Numofbed" class="col-sm-4 col-form-label">Number of bed</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Numofbed" class="form-control" required placeholder="4 ,3 ,2 ..Bed" />
 
@@ -306,7 +179,7 @@
                                                     </div>
                                                     <div class="row mb-3">
 
-                                                        <label asp-for="BuildingNumber" class="col-sm-4 col-form-label"></label>
+                                                        <label asp-for="BuildingNumber" class="col-sm-4 col-form-label">Building Number</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="BuildingNumber" required class="form-control"placeholder="8" />
 
@@ -315,7 +188,7 @@
                                                     </div>
                                                     <div class="row mb-3">
 
-                                                        <label asp-for="Electricitybillprice" class="col-sm-4 col-form-label"></label>
+                                                        <label asp-for="Electricitybillprice" class="col-sm-4 col-form-label">Electricity bill price</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Electricitybillprice" class="form-control" placeholder="Price In JOD" />
 
@@ -324,7 +197,7 @@
                                                     </div>
                                                     <div class="row mb-3">
 
-                                                        <label asp-for="Waterbillprice" class="col-sm-4 col-form-label"></label>
+                                                        <label asp-for="Waterbillprice" class="col-sm-4 col-form-label">Water bill price</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Waterbillprice" class="form-control"placeholder="Price In JOD" />
 
@@ -454,5 +327,130 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
+
+
+    
+@*<h1>Create</h1>
+
+<h4>Apartmentsad</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Adtitel" class="control-label"></label>
+                <input asp-for="Adtitel" class="form-control" />
+                <span asp-validation-for="Adtitel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Addate" class="control-label"></label>
+                <input asp-for="Addate" class="form-control" />
+                <span asp-validation-for="Addate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptions" class="control-label"></label>
+                <input asp-for="Descriptions" class="form-control" />
+                <span asp-validation-for="Descriptions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numofperson" class="control-label"></label>
+                <input asp-for="Numofperson" class="form-control" />
+                <span asp-validation-for="Numofperson" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numofroom" class="control-label"></label>
+                <input asp-for="Numofroom" class="form-control" />
+                <span asp-validation-for="Numofroom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numofbed" class="control-label"></label>
+                <input asp-for="Numofbed" class="form-control" />
+                <span asp-validation-for="Numofbed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <select asp-for="Address" class="form-control" asp-items="ViewBag.Address"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingNumber" class="control-label"></label>
+                <input asp-for="BuildingNumber" class="form-control" />
+                <span asp-validation-for="BuildingNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Electricitybillprice" class="control-label"></label>
+                <input asp-for="Electricitybillprice" class="form-control" />
+                <span asp-validation-for="Electricitybillprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Waterbillprice" class="control-label"></label>
+                <input asp-for="Waterbillprice" class="form-control" />
+                <span asp-validation-for="Waterbillprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <select asp-for="Duration" class="form-control" asp-items="ViewBag.Duration"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile1" class="control-label"></label>
+                <input asp-for="ImageFile1" class="form-control" />
+                <span asp-validation-for="ImageFile1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile2" class="control-label"></label>
+                <input asp-for="ImageFile2" class="form-control" />
+                <span asp-validation-for="Image2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile3" class="control-label"></label>
+                <input asp-for="ImageFile3" class="form-control" />
+                <span asp-validation-for="Image3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile4" class="control-label"></label>
+                <input asp-for="ImageFile4" class="form-control" />
+                <span asp-validation-for="Image4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile5" class="control-label"></label>
+                <input asp-for="ImageFile5" class="form-control" />
+                <span asp-validation-for="Image5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile6" class="control-label"></label>
+                <input asp-for="ImageFile6" class="form-control" />
+                <span asp-validation-for="Image6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile7" class="control-label"></label>
+                <input asp-for="ImageFile7" class="form-control" />
+                <span asp-validation-for="Image7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile8" class="control-label"></label>
+                <input asp-for="ImageFile8" class="form-control" />
+                <span asp-validation-for="Image8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Userinfo" class="control-label"></label>
+                <select asp-for="Userinfo" class="form-control" asp-items="ViewBag.Userinfo"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
 
 

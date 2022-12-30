@@ -519,12 +519,12 @@ namespace Your_Room.Controllers
                 return NotFound();
             }
 
-            return View(apartmentsad);
+            return View();
         }
 
-        // POST: Apartmentsads/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //// POST: Apartmentsads/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
@@ -534,7 +534,7 @@ namespace Your_Room.Controllers
             var apartmentsad = await _context.Apartmentsads.FindAsync(id);
             _context.Apartmentsads.Remove(apartmentsad);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("AllAds", "Ads");
         }
 
         private bool ApartmentsadExists(decimal id)

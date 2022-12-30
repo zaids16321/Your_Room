@@ -64,7 +64,10 @@
                                         </label>
                                         <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password </a></span>
                                     </div>
-
+                                     @if (ViewBag.error != null)
+                                    {
+                                        <p style="color:red">@ViewBag.error</p>
+                                    }
                                     <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
 
                                     <span class="d-block text-center my-4 text-muted"> or sign in with</span>

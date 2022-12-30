@@ -8,56 +8,6 @@
     var email = ViewBag.Customer_Email;
     var Img = ViewBag.Customer_Image;
 }
-
-@*
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Userid" />
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phonenumber" class="control-label"></label>
-                <input asp-for="Phonenumber" class="form-control" />
-                <span asp-validation-for="Phonenumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserImage" class="control-label"></label>
-                <input asp-for="UserImage" class="form-control" />
-                <span asp-validation-for="UserImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usertype" class="control-label"></label>
-                <input asp-for="Usertype" class="form-control" />
-                <span asp-validation-for="Usertype" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-*@
 <!DOCTYPE html>
 <!-- beautify ignore:start -->
 <html lang="en"
@@ -390,7 +340,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header d-flex align-items-center justify-content-between">
                                         <h5 class="mb-0">Profile</h5>
-                                        <a asp-action="AllAds" asp-controller="Ads" class="btn btn-primary btn-lg">Ads </a>
+                                        <a asp-action="AllAds" asp-controller="Ads" class="btn btn-primary btn-lg">My Ads</a>
 
                                         @*<small class="text-muted float-end">Default label</small>*@
                                     </div>
@@ -402,7 +352,7 @@
                                             <div class="row ">
                                                 <div class="col-sm-6">
                                                     <div class="row mb-3">
-                                                        <label asp-for="FullName" class="col-sm-4 col-form-label">FullName</label>
+                                                        <label asp-for="FullName" class="col-sm-4 col-form-label">Full Name</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="FullName" type="text" class="form-control" placeholder="FullName.."required />
                                                             <span asp-validation-for="FullName" class="text-danger"></span>
@@ -423,7 +373,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                        <label asp-for="Phonenumber" class="col-sm-4 col-form-label">Phonenumber</label>
+                                                        <label asp-for="Phonenumber" class="col-sm-4 col-form-label">Phone number</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Phonenumber" type="tel" required class="form-control" placeholder="00000000" />
                                                             <span asp-validation-for="Phonenumber" class="text-danger"></span>
@@ -436,22 +386,13 @@
                                                             <span asp-validation-for="ImageFile" class="text-danger"></span>
                                                         </div>
                                                     </div>
-                                                    <div class="row mb-3">
-                                                     @*<label asp-for="Gender" style="margin-top: -20px;" class="col-sm-4 col-form-label">Gender</label>
-                                                     <div class="form-check form-check-inline">
-                                                         <input asp-for="Gender" class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male">
-                                                         <label style="margin-left: 16px; color: #000000;" class="form-check-label" asp-for="Gender">Male</label>
-                                                     </div>
-                                                       <div style="padding-left:10px;" class="form-check form-check-inline">
-                                                         <input asp-for="Gender" style="margin-left:12px;" class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female">
-                                                         <label style="margin-left: 27px; color: #000000;" class="form-check-label" asp-for="Gender">Female</label>
-                                                    /div>*@
+@*                                                    <div class="row mb-3">
                                                         <label asp-for="Gender" class="col-sm-4 col-form-label">Gender</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Gender"  class="form-control" placeholder="Gender"disabled />
                                                             <span asp-validation-for="Gender" class="text-danger"></span>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                     <div class="row mb-3">
                                                         <label asp-for="Age" class="col-sm-4 col-form-label">Age</label>
                                                         <div class="col-sm-8">
@@ -459,13 +400,13 @@
                                                             <span asp-validation-for="Age" class="text-danger"></span>
                                                         </div>
                                                     </div>
-                                                    <div class="row mb-3">
+@*                                                    <div class="row mb-3">
                                                         <label asp-for="Usertype" class="col-sm-4 col-form-label">Usertype</label>
                                                         <div class="col-sm-8">
                                                             <input asp-for="Usertype"  class="form-control" placeholder="Usertype" disabled />
                                                             <span asp-validation-for="Usertype" class="text-danger"></span>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                 </div>
                                                     <div class="d-grid gap-2 col-lg-12 mx-auto">
                                                         <input type="submit" value="Save" class="btn btn-primary btn-lg" />

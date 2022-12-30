@@ -52,30 +52,34 @@
           <div class="col-lg-5 pl-lg-5 ml-auto">
             <div class="mb-5">
               <div class="mt-5">
-                                          @if (Model.UserinfoNavigation.UserImage != null)
+                         @if (Model.UserinfoNavigation.UserImage != null)
                         {
                     <img src=@Url.Content("~/Image/"+@Model.UserinfoNavigation.UserImage) style="width: 100px; height: 100px; " alt="Image" class="border rounded-circle p-2 mx-auto mb-3">
                         }
-                <h4 class="text-black">Name:@Model.UserinfoNavigation.FullName </h4>
-                <p class="text-muted mb-4">@Model.UserinfoNavigation.Usertype / Phone @Model.UserinfoNavigation.Phonenumber</p>
+                <h4 class="text-black">Name: @Model.UserinfoNavigation.FullName </h4>
+                <p class="text-muted mb-4">@Model.UserinfoNavigation.Usertype / Phone: <b>@Model.UserinfoNavigation.Phonenumber</b></p>
               </div>
             </div>
             <hr />
             <div class="mb-5">
               <h3 class="text-black mb-4">@Model.Ftitel</h3>
-              <p>@Model.Fdate Announcement date</p>
+              <p>Ad Date: @Model.Fdate </p>
               <p><b>Price: $@Model.Price</b></p>
-
-              <p>@Model.Descriptions</p>
+              <p><b>City: </b>@Model.AddressNavigation.City.</p>
               <p><b>Street:</b> @Model.Street.</p>
-              <p><b>Building Number:</b>@Model.BuildingNumber.</p>
+              <p><b>Descriptions:</b> @Model.Descriptions</p>
+              <p><b>Building Number: </b>@Model.BuildingNumber.</p>
 
-              <p><b>City:</b>@Model.AddressNavigation.City.</p>
 
               @*<p>@Model.UserinfoNavigation.FullName Name of Lessor.</p>*@
               @*<p>@Model.UserinfoNavigation.Phonenumber Phone number of Lessor.</p>*@
 
             </div>
+           @if (Id==Model.UserinfoNavigation.Userid)
+           {
+            <a asp-action="Edit" asp-controller="Furnitures" asp-route-id="@Model.Fid" class="btn btn-primary mr-2 mb-2">Edit</a>
+            <a asp-action="DeleteConfirmed" asp-controller="Furnitures" asp-route-id="@Model.Fid" class="btn btn-danger mr-2 mb-2">Delete</a> 
+           }
 
           </div>
         </div>
