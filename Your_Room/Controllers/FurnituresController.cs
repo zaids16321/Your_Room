@@ -54,6 +54,8 @@ namespace Your_Room.Controllers
         // GET: Furnitures/Details/5
         public IActionResult Create()
         {
+            HttpContext.Session.SetString("message", "Email already used");
+            ViewBag.error = HttpContext.Session.GetString("message");
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
             ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
             ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");
@@ -71,6 +73,8 @@ namespace Your_Room.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Furniture furniture)
         {
+            HttpContext.Session.SetString("message", "Email already used");
+            ViewBag.error = HttpContext.Session.GetString("message");
             ViewBag.Customer_Id = HttpContext.Session.GetInt32("Customer_Id");
             ViewBag.Customer_Name = HttpContext.Session.GetString("Customer_Name");
             ViewBag.Customer_Image = HttpContext.Session.GetString("Customer_Image");

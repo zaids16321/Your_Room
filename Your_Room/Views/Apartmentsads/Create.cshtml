@@ -227,13 +227,13 @@
                                                     <div class="row mb-3">
                                                           <label asp-for="Image1" class="form-label"></label>
                                                         <div class="col-sm-12">
-                                                             <input asp-for="ImageFile1" required class="form-control" placeholder="Image1" />
+                                                             <input asp-for="ImageFile1"  class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
                                                       <div class="row mb-3">
                                                             <label asp-for="Image2" class="form-label"></label>
                                                         <div class="col-sm-12">
-                                                             <input asp-for="ImageFile2" required class="form-control" placeholder="Image1" />
+                                                             <input asp-for="ImageFile2"  class="form-control" placeholder="Image1" />
                                                         </div>
                                                     </div>
 
@@ -282,7 +282,7 @@
                                                   
                                              
                                                          <div class="d-grid gap-2 col-lg-12 mx-auto">
-                                                        <input type="submit" value="Create" class="btn btn-primary btn-lg" />
+                                                        <input type="submit" onclick="myFunction()" value="Create" class="btn btn-primary btn-lg" />
                                                     </div>
                                                    
                                                  
@@ -311,6 +311,11 @@
     <!-- / Layout wrapper -->
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
+    <script>
+function myFunction() {
+  alert("Ad Created successfully");
+}
+</script>
     <script src="~/createAd/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="~/createAd/assets/vendor/libs/popper/popper.js"></script>
     <script src="~/createAd/assets/vendor/js/bootstrap.js"></script>
